@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>加盟成功</title>
+<script type="text/javascript" language="javascript">
+
+</script> 
+</head>
+
+<body>
+           <div style="padding:20px;width:320px;height:100px;border:1px solid #cccccc;  margin-top:-50px;margin-left:-160px; position:absolute;top:50%; left:50%;border-radius:5px;line-height:30px;">恭喜你<i style="color:red;font-style:normal;">加盟成功</i>......<br/>您的后台密码是${a }请牢记   <a href="<%=path %>/index.jsp"><br/>点击</a>跳转主页面!  </div>
+</body>
+</html>

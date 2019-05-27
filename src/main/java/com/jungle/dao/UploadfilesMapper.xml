@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jungle.dao.UploadfilesMapper" >
+  <resultMap id="BaseResultMap" type="com.jungle.bean.Uploadfiles" >
+    <id column="FileId" property="fileid" jdbcType="INTEGER" />
+    <result column="FileName" property="filename" jdbcType="VARCHAR" />
+    <result column="FileDescription" property="filedescription" jdbcType="VARCHAR" />
+    <result column="FileCreateDate" property="filecreatedate" jdbcType="DATE" />
+    <result column="FileKind" property="filekind" jdbcType="VARCHAR" />
+    <result column="FileModule" property="filemodule" jdbcType="VARCHAR" />
+    <result column="targetFileName" property="targetfilename" jdbcType="VARCHAR" />
+    <result column="FileType" property="filetype" jdbcType="VARCHAR" />
+    <result column="FileSize" property="filesize" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FileId, FileName, FileDescription, FileCreateDate, FileKind, FileModule, targetFileName, 
+    FileType, FileSize
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.UploadfilesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from uploadfiles
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from uploadfiles
+    where FileId = #{fileid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from uploadfiles
+    where FileId = #{fileid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jungle.bean.UploadfilesExample" >
+    delete from uploadfiles
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jungle.bean.Uploadfiles" >
+    insert into uploadfiles (FileId, FileName, FileDescription, 
+      FileCreateDate, FileKind, FileModule, 
+      targetFileName, FileType, FileSize
+      )
+    values (#{fileid,jdbcType=INTEGER}, #{filename,jdbcType=VARCHAR}, #{filedescription,jdbcType=VARCHAR}, 
+      #{filecreatedate,jdbcType=DATE}, #{filekind,jdbcType=VARCHAR}, #{filemodule,jdbcType=VARCHAR}, 
+      #{targetfilename,jdbcType=VARCHAR}, #{filetype,jdbcType=VARCHAR}, #{filesize,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jungle.bean.Uploadfiles" >
+    insert into uploadfiles
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fileid != null" >
+        FileId,
+      </if>
+      <if test="filename != null" >
+        FileName,
+      </if>
+      <if test="filedescription != null" >
+        FileDescription,
+      </if>
+      <if test="filecreatedate != null" >
+        FileCreateDate,
+      </if>
+      <if test="filekind != null" >
+        FileKind,
+      </if>
+      <if test="filemodule != null" >
+        FileModule,
+      </if>
+      <if test="targetfilename != null" >
+        targetFileName,
+      </if>
+      <if test="filetype != null" >
+        FileType,
+      </if>
+      <if test="filesize != null" >
+        FileSize,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fileid != null" >
+        #{fileid,jdbcType=INTEGER},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filedescription != null" >
+        #{filedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="filecreatedate != null" >
+        #{filecreatedate,jdbcType=DATE},
+      </if>
+      <if test="filekind != null" >
+        #{filekind,jdbcType=VARCHAR},
+      </if>
+      <if test="filemodule != null" >
+        #{filemodule,jdbcType=VARCHAR},
+      </if>
+      <if test="targetfilename != null" >
+        #{targetfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null" >
+        #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null" >
+        #{filesize,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jungle.bean.UploadfilesExample" resultType="java.lang.Integer" >
+    select count(*) from uploadfiles
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update uploadfiles
+    <set >
+      <if test="record.fileid != null" >
+        FileId = #{record.fileid,jdbcType=INTEGER},
+      </if>
+      <if test="record.filename != null" >
+        FileName = #{record.filename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filedescription != null" >
+        FileDescription = #{record.filedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filecreatedate != null" >
+        FileCreateDate = #{record.filecreatedate,jdbcType=DATE},
+      </if>
+      <if test="record.filekind != null" >
+        FileKind = #{record.filekind,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filemodule != null" >
+        FileModule = #{record.filemodule,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetfilename != null" >
+        targetFileName = #{record.targetfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filetype != null" >
+        FileType = #{record.filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filesize != null" >
+        FileSize = #{record.filesize,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update uploadfiles
+    set FileId = #{record.fileid,jdbcType=INTEGER},
+      FileName = #{record.filename,jdbcType=VARCHAR},
+      FileDescription = #{record.filedescription,jdbcType=VARCHAR},
+      FileCreateDate = #{record.filecreatedate,jdbcType=DATE},
+      FileKind = #{record.filekind,jdbcType=VARCHAR},
+      FileModule = #{record.filemodule,jdbcType=VARCHAR},
+      targetFileName = #{record.targetfilename,jdbcType=VARCHAR},
+      FileType = #{record.filetype,jdbcType=VARCHAR},
+      FileSize = #{record.filesize,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jungle.bean.Uploadfiles" >
+    update uploadfiles
+    <set >
+      <if test="filename != null" >
+        FileName = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filedescription != null" >
+        FileDescription = #{filedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="filecreatedate != null" >
+        FileCreateDate = #{filecreatedate,jdbcType=DATE},
+      </if>
+      <if test="filekind != null" >
+        FileKind = #{filekind,jdbcType=VARCHAR},
+      </if>
+      <if test="filemodule != null" >
+        FileModule = #{filemodule,jdbcType=VARCHAR},
+      </if>
+      <if test="targetfilename != null" >
+        targetFileName = #{targetfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null" >
+        FileType = #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null" >
+        FileSize = #{filesize,jdbcType=INTEGER},
+      </if>
+    </set>
+    where FileId = #{fileid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jungle.bean.Uploadfiles" >
+    update uploadfiles
+    set FileName = #{filename,jdbcType=VARCHAR},
+      FileDescription = #{filedescription,jdbcType=VARCHAR},
+      FileCreateDate = #{filecreatedate,jdbcType=DATE},
+      FileKind = #{filekind,jdbcType=VARCHAR},
+      FileModule = #{filemodule,jdbcType=VARCHAR},
+      targetFileName = #{targetfilename,jdbcType=VARCHAR},
+      FileType = #{filetype,jdbcType=VARCHAR},
+      FileSize = #{filesize,jdbcType=INTEGER}
+    where FileId = #{fileid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jungle.dao.OrganizationMapper" >
+  <resultMap id="BaseResultMap" type="com.jungle.bean.Organization" >
+    <id column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+    <result column="org_description" property="orgDescription" jdbcType="VARCHAR" />
+    <result column="org_manager" property="orgManager" jdbcType="VARCHAR" />
+    <result column="org_phone" property="orgPhone" jdbcType="VARCHAR" />
+    <result column="org_parentid" property="orgParentid" jdbcType="INTEGER" />
+    <result column="org_establishTime" property="orgEstablishtime" jdbcType="TIMESTAMP" />
+    <result column="org_path" property="orgPath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    org_id, org_name, org_description, org_manager, org_phone, org_parentid, org_establishTime, 
+    org_path
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.OrganizationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from organization
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from organization
+    where org_id = #{orgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from organization
+    where org_id = #{orgId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jungle.bean.OrganizationExample" >
+    delete from organization
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jungle.bean.Organization" >
+    insert into organization (org_id, org_name, org_description, 
+      org_manager, org_phone, org_parentid, 
+      org_establishTime, org_path)
+    values (#{orgId,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, #{orgDescription,jdbcType=VARCHAR}, 
+      #{orgManager,jdbcType=VARCHAR}, #{orgPhone,jdbcType=VARCHAR}, #{orgParentid,jdbcType=INTEGER}, 
+      #{orgEstablishtime,jdbcType=TIMESTAMP}, #{orgPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jungle.bean.Organization" >
+    insert into organization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="orgName != null" >
+        org_name,
+      </if>
+      <if test="orgDescription != null" >
+        org_description,
+      </if>
+      <if test="orgManager != null" >
+        org_manager,
+      </if>
+      <if test="orgPhone != null" >
+        org_phone,
+      </if>
+      <if test="orgParentid != null" >
+        org_parentid,
+      </if>
+      <if test="orgEstablishtime != null" >
+        org_establishTime,
+      </if>
+      <if test="orgPath != null" >
+        org_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgDescription != null" >
+        #{orgDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="orgManager != null" >
+        #{orgManager,jdbcType=VARCHAR},
+      </if>
+      <if test="orgPhone != null" >
+        #{orgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orgParentid != null" >
+        #{orgParentid,jdbcType=INTEGER},
+      </if>
+      <if test="orgEstablishtime != null" >
+        #{orgEstablishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgPath != null" >
+        #{orgPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jungle.bean.OrganizationExample" resultType="java.lang.Integer" >
+    select count(*) from organization
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update organization
+    <set >
+      <if test="record.orgId != null" >
+        org_id = #{record.orgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orgName != null" >
+        org_name = #{record.orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgDescription != null" >
+        org_description = #{record.orgDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgManager != null" >
+        org_manager = #{record.orgManager,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgPhone != null" >
+        org_phone = #{record.orgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgParentid != null" >
+        org_parentid = #{record.orgParentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.orgEstablishtime != null" >
+        org_establishTime = #{record.orgEstablishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orgPath != null" >
+        org_path = #{record.orgPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update organization
+    set org_id = #{record.orgId,jdbcType=INTEGER},
+      org_name = #{record.orgName,jdbcType=VARCHAR},
+      org_description = #{record.orgDescription,jdbcType=VARCHAR},
+      org_manager = #{record.orgManager,jdbcType=VARCHAR},
+      org_phone = #{record.orgPhone,jdbcType=VARCHAR},
+      org_parentid = #{record.orgParentid,jdbcType=INTEGER},
+      org_establishTime = #{record.orgEstablishtime,jdbcType=TIMESTAMP},
+      org_path = #{record.orgPath,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jungle.bean.Organization" >
+    update organization
+    <set >
+      <if test="orgName != null" >
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgDescription != null" >
+        org_description = #{orgDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="orgManager != null" >
+        org_manager = #{orgManager,jdbcType=VARCHAR},
+      </if>
+      <if test="orgPhone != null" >
+        org_phone = #{orgPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orgParentid != null" >
+        org_parentid = #{orgParentid,jdbcType=INTEGER},
+      </if>
+      <if test="orgEstablishtime != null" >
+        org_establishTime = #{orgEstablishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgPath != null" >
+        org_path = #{orgPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where org_id = #{orgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jungle.bean.Organization" >
+    update organization
+    set org_name = #{orgName,jdbcType=VARCHAR},
+      org_description = #{orgDescription,jdbcType=VARCHAR},
+      org_manager = #{orgManager,jdbcType=VARCHAR},
+      org_phone = #{orgPhone,jdbcType=VARCHAR},
+      org_parentid = #{orgParentid,jdbcType=INTEGER},
+      org_establishTime = #{orgEstablishtime,jdbcType=TIMESTAMP},
+      org_path = #{orgPath,jdbcType=VARCHAR}
+    where org_id = #{orgId,jdbcType=INTEGER}
+  </update>
+</mapper>

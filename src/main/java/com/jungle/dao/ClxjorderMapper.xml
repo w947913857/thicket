@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jungle.dao.ClxjorderMapper" >
+  <resultMap id="BaseResultMap" type="com.jungle.bean.Clxjorder" >
+    <id column="oid" property="oid" jdbcType="VARCHAR" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="checkstartdate" property="checkstartdate" jdbcType="DATE" />
+    <result column="checkenddate" property="checkenddate" jdbcType="DATE" />
+    <result column="total" property="total" jdbcType="DECIMAL" />
+    <result column="checkperson" property="checkperson" jdbcType="VARCHAR" />
+    <result column="relperson" property="relperson" jdbcType="VARCHAR" />
+    <result column="relphone" property="relphone" jdbcType="VARCHAR" />
+    <result column="relemail" property="relemail" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="reservetime" property="reservetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    oid, cid, uid, checkstartdate, checkenddate, total, checkperson, relperson, relphone, 
+    relemail, state, reservetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.ClxjorderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from clxjorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from clxjorder
+    where oid = #{oid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from clxjorder
+    where oid = #{oid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jungle.bean.ClxjorderExample" >
+    delete from clxjorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jungle.bean.Clxjorder" >
+    insert into clxjorder (oid, cid, uid, 
+      checkstartdate, checkenddate, total, 
+      checkperson, relperson, relphone, 
+      relemail, state, reservetime
+      )
+    values (#{oid,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{checkstartdate,jdbcType=DATE}, #{checkenddate,jdbcType=DATE}, #{total,jdbcType=DECIMAL}, 
+      #{checkperson,jdbcType=VARCHAR}, #{relperson,jdbcType=VARCHAR}, #{relphone,jdbcType=VARCHAR}, 
+      #{relemail,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{reservetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jungle.bean.Clxjorder" >
+    insert into clxjorder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        oid,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="checkstartdate != null" >
+        checkstartdate,
+      </if>
+      <if test="checkenddate != null" >
+        checkenddate,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="checkperson != null" >
+        checkperson,
+      </if>
+      <if test="relperson != null" >
+        relperson,
+      </if>
+      <if test="relphone != null" >
+        relphone,
+      </if>
+      <if test="relemail != null" >
+        relemail,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="reservetime != null" >
+        reservetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        #{oid,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="checkstartdate != null" >
+        #{checkstartdate,jdbcType=DATE},
+      </if>
+      <if test="checkenddate != null" >
+        #{checkenddate,jdbcType=DATE},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="checkperson != null" >
+        #{checkperson,jdbcType=VARCHAR},
+      </if>
+      <if test="relperson != null" >
+        #{relperson,jdbcType=VARCHAR},
+      </if>
+      <if test="relphone != null" >
+        #{relphone,jdbcType=VARCHAR},
+      </if>
+      <if test="relemail != null" >
+        #{relemail,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="reservetime != null" >
+        #{reservetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jungle.bean.ClxjorderExample" resultType="java.lang.Integer" >
+    select count(*) from clxjorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update clxjorder
+    <set >
+      <if test="record.oid != null" >
+        oid = #{record.oid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cid != null" >
+        cid = #{record.cid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkstartdate != null" >
+        checkstartdate = #{record.checkstartdate,jdbcType=DATE},
+      </if>
+      <if test="record.checkenddate != null" >
+        checkenddate = #{record.checkenddate,jdbcType=DATE},
+      </if>
+      <if test="record.total != null" >
+        total = #{record.total,jdbcType=DECIMAL},
+      </if>
+      <if test="record.checkperson != null" >
+        checkperson = #{record.checkperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.relperson != null" >
+        relperson = #{record.relperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.relphone != null" >
+        relphone = #{record.relphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.relemail != null" >
+        relemail = #{record.relemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.reservetime != null" >
+        reservetime = #{record.reservetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update clxjorder
+    set oid = #{record.oid,jdbcType=VARCHAR},
+      cid = #{record.cid,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      checkstartdate = #{record.checkstartdate,jdbcType=DATE},
+      checkenddate = #{record.checkenddate,jdbcType=DATE},
+      total = #{record.total,jdbcType=DECIMAL},
+      checkperson = #{record.checkperson,jdbcType=VARCHAR},
+      relperson = #{record.relperson,jdbcType=VARCHAR},
+      relphone = #{record.relphone,jdbcType=VARCHAR},
+      relemail = #{record.relemail,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      reservetime = #{record.reservetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jungle.bean.Clxjorder" >
+    update clxjorder
+    <set >
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="checkstartdate != null" >
+        checkstartdate = #{checkstartdate,jdbcType=DATE},
+      </if>
+      <if test="checkenddate != null" >
+        checkenddate = #{checkenddate,jdbcType=DATE},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="checkperson != null" >
+        checkperson = #{checkperson,jdbcType=VARCHAR},
+      </if>
+      <if test="relperson != null" >
+        relperson = #{relperson,jdbcType=VARCHAR},
+      </if>
+      <if test="relphone != null" >
+        relphone = #{relphone,jdbcType=VARCHAR},
+      </if>
+      <if test="relemail != null" >
+        relemail = #{relemail,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="reservetime != null" >
+        reservetime = #{reservetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jungle.bean.Clxjorder" >
+    update clxjorder
+    set cid = #{cid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      checkstartdate = #{checkstartdate,jdbcType=DATE},
+      checkenddate = #{checkenddate,jdbcType=DATE},
+      total = #{total,jdbcType=DECIMAL},
+      checkperson = #{checkperson,jdbcType=VARCHAR},
+      relperson = #{relperson,jdbcType=VARCHAR},
+      relphone = #{relphone,jdbcType=VARCHAR},
+      relemail = #{relemail,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      reservetime = #{reservetime,jdbcType=TIMESTAMP}
+    where oid = #{oid,jdbcType=VARCHAR}
+  </update>
+</mapper>

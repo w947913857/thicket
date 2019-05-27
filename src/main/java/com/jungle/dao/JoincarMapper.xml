@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jungle.dao.JoincarMapper" >
+  <resultMap id="BaseResultMap" type="com.jungle.bean.Joincar" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="theowner" property="theowner" jdbcType="VARCHAR" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="carname" property="carname" jdbcType="VARCHAR" />
+    <result column="travelnumber" property="travelnumber" jdbcType="VARCHAR" />
+    <result column="travelrun" property="travelrun" jdbcType="VARCHAR" />
+    <result column="drivername" property="drivername" jdbcType="VARCHAR" />
+    <result column="drivernumber" property="drivernumber" jdbcType="VARCHAR" />
+    <result column="driverphone" property="driverphone" jdbcType="VARCHAR" />
+    <result column="insurancename" property="insurancename" jdbcType="VARCHAR" />
+    <result column="insurancenumber" property="insurancenumber" jdbcType="VARCHAR" />
+    <result column="insurancephone" property="insurancephone" jdbcType="VARCHAR" />
+    <result column="message" property="message" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="jointime" property="jointime" jdbcType="VARCHAR" />
+    <result column="joinstatus" property="joinstatus" jdbcType="INTEGER" />
+    <result column="fileurl" property="fileurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, theowner, idcard, address, carname, travelnumber, travelrun, drivername, drivernumber, 
+    driverphone, insurancename, insurancenumber, insurancephone, message, uid, jointime, 
+    joinstatus, fileurl
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.JoincarExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from joincar
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from joincar
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from joincar
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jungle.bean.JoincarExample" >
+    delete from joincar
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jungle.bean.Joincar" >
+    insert into joincar (id, theowner, idcard, 
+      address, carname, travelnumber, 
+      travelrun, drivername, drivernumber, 
+      driverphone, insurancename, insurancenumber, 
+      insurancephone, message, uid, 
+      jointime, joinstatus, fileurl
+      )
+    values (#{id,jdbcType=INTEGER}, #{theowner,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{carname,jdbcType=VARCHAR}, #{travelnumber,jdbcType=VARCHAR}, 
+      #{travelrun,jdbcType=VARCHAR}, #{drivername,jdbcType=VARCHAR}, #{drivernumber,jdbcType=VARCHAR}, 
+      #{driverphone,jdbcType=VARCHAR}, #{insurancename,jdbcType=VARCHAR}, #{insurancenumber,jdbcType=VARCHAR}, 
+      #{insurancephone,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, 
+      #{jointime,jdbcType=VARCHAR}, #{joinstatus,jdbcType=INTEGER}, #{fileurl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jungle.bean.Joincar" >
+    insert into joincar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="theowner != null" >
+        theowner,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="carname != null" >
+        carname,
+      </if>
+      <if test="travelnumber != null" >
+        travelnumber,
+      </if>
+      <if test="travelrun != null" >
+        travelrun,
+      </if>
+      <if test="drivername != null" >
+        drivername,
+      </if>
+      <if test="drivernumber != null" >
+        drivernumber,
+      </if>
+      <if test="driverphone != null" >
+        driverphone,
+      </if>
+      <if test="insurancename != null" >
+        insurancename,
+      </if>
+      <if test="insurancenumber != null" >
+        insurancenumber,
+      </if>
+      <if test="insurancephone != null" >
+        insurancephone,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="jointime != null" >
+        jointime,
+      </if>
+      <if test="joinstatus != null" >
+        joinstatus,
+      </if>
+      <if test="fileurl != null" >
+        fileurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="theowner != null" >
+        #{theowner,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="carname != null" >
+        #{carname,jdbcType=VARCHAR},
+      </if>
+      <if test="travelnumber != null" >
+        #{travelnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="travelrun != null" >
+        #{travelrun,jdbcType=VARCHAR},
+      </if>
+      <if test="drivername != null" >
+        #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="drivernumber != null" >
+        #{drivernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverphone != null" >
+        #{driverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancename != null" >
+        #{insurancename,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancenumber != null" >
+        #{insurancenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancephone != null" >
+        #{insurancephone,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="jointime != null" >
+        #{jointime,jdbcType=VARCHAR},
+      </if>
+      <if test="joinstatus != null" >
+        #{joinstatus,jdbcType=INTEGER},
+      </if>
+      <if test="fileurl != null" >
+        #{fileurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jungle.bean.JoincarExample" resultType="java.lang.Integer" >
+    select count(*) from joincar
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update joincar
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.theowner != null" >
+        theowner = #{record.theowner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null" >
+        idcard = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carname != null" >
+        carname = #{record.carname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.travelnumber != null" >
+        travelnumber = #{record.travelnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.travelrun != null" >
+        travelrun = #{record.travelrun,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drivername != null" >
+        drivername = #{record.drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drivernumber != null" >
+        drivernumber = #{record.drivernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.driverphone != null" >
+        driverphone = #{record.driverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insurancename != null" >
+        insurancename = #{record.insurancename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insurancenumber != null" >
+        insurancenumber = #{record.insurancenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insurancephone != null" >
+        insurancephone = #{record.insurancephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.message != null" >
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.jointime != null" >
+        jointime = #{record.jointime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.joinstatus != null" >
+        joinstatus = #{record.joinstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.fileurl != null" >
+        fileurl = #{record.fileurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update joincar
+    set id = #{record.id,jdbcType=INTEGER},
+      theowner = #{record.theowner,jdbcType=VARCHAR},
+      idcard = #{record.idcard,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      carname = #{record.carname,jdbcType=VARCHAR},
+      travelnumber = #{record.travelnumber,jdbcType=VARCHAR},
+      travelrun = #{record.travelrun,jdbcType=VARCHAR},
+      drivername = #{record.drivername,jdbcType=VARCHAR},
+      drivernumber = #{record.drivernumber,jdbcType=VARCHAR},
+      driverphone = #{record.driverphone,jdbcType=VARCHAR},
+      insurancename = #{record.insurancename,jdbcType=VARCHAR},
+      insurancenumber = #{record.insurancenumber,jdbcType=VARCHAR},
+      insurancephone = #{record.insurancephone,jdbcType=VARCHAR},
+      message = #{record.message,jdbcType=VARCHAR},
+      uid = #{record.uid,jdbcType=INTEGER},
+      jointime = #{record.jointime,jdbcType=VARCHAR},
+      joinstatus = #{record.joinstatus,jdbcType=INTEGER},
+      fileurl = #{record.fileurl,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jungle.bean.Joincar" >
+    update joincar
+    <set >
+      <if test="theowner != null" >
+        theowner = #{theowner,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="carname != null" >
+        carname = #{carname,jdbcType=VARCHAR},
+      </if>
+      <if test="travelnumber != null" >
+        travelnumber = #{travelnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="travelrun != null" >
+        travelrun = #{travelrun,jdbcType=VARCHAR},
+      </if>
+      <if test="drivername != null" >
+        drivername = #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="drivernumber != null" >
+        drivernumber = #{drivernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverphone != null" >
+        driverphone = #{driverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancename != null" >
+        insurancename = #{insurancename,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancenumber != null" >
+        insurancenumber = #{insurancenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancephone != null" >
+        insurancephone = #{insurancephone,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="jointime != null" >
+        jointime = #{jointime,jdbcType=VARCHAR},
+      </if>
+      <if test="joinstatus != null" >
+        joinstatus = #{joinstatus,jdbcType=INTEGER},
+      </if>
+      <if test="fileurl != null" >
+        fileurl = #{fileurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jungle.bean.Joincar" >
+    update joincar
+    set theowner = #{theowner,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      carname = #{carname,jdbcType=VARCHAR},
+      travelnumber = #{travelnumber,jdbcType=VARCHAR},
+      travelrun = #{travelrun,jdbcType=VARCHAR},
+      drivername = #{drivername,jdbcType=VARCHAR},
+      drivernumber = #{drivernumber,jdbcType=VARCHAR},
+      driverphone = #{driverphone,jdbcType=VARCHAR},
+      insurancename = #{insurancename,jdbcType=VARCHAR},
+      insurancenumber = #{insurancenumber,jdbcType=VARCHAR},
+      insurancephone = #{insurancephone,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      jointime = #{jointime,jdbcType=VARCHAR},
+      joinstatus = #{joinstatus,jdbcType=INTEGER},
+      fileurl = #{fileurl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

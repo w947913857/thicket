@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jungle.dao.ClxjmainMapper" >
+  <resultMap id="BaseResultMap" type="com.jungle.bean.Clxjmain" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type1" property="type1" jdbcType="BIT" />
+    <result column="type2" property="type2" jdbcType="BIT" />
+    <result column="belong_city" property="belongCity" jdbcType="VARCHAR" />
+    <result column="first_img_big" property="firstImgBig" jdbcType="VARCHAR" />
+    <result column="first_img_min" property="firstImgMin" jdbcType="VARCHAR" />
+    <result column="carousel_img" property="carouselImg" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+    <result column="reserve_num" property="reserveNum" jdbcType="INTEGER" />
+    <result column="recommend" property="recommend" jdbcType="BIT" />
+    <result column="joinid" property="joinid" jdbcType="INTEGER" />
+    <result column="checkStatus" property="checkstatus" jdbcType="INTEGER" />
+    <result column="abbot" property="abbot" jdbcType="VARCHAR" />
+    <result column="opentime" property="opentime" jdbcType="TIMESTAMP" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.jungle.bean.ClxjmainWithBLOBs" extends="BaseResultMap" >
+    <result column="introduction" property="introduction" jdbcType="LONGVARCHAR" />
+    <result column="abbotresume" property="abbotresume" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, type1, type2, belong_city, first_img_big, first_img_min, carousel_img, 
+    price, address, longitude, latitude, reserve_num, recommend, joinid, checkStatus, 
+    abbot, opentime, createtime, mobile
+  </sql>
+  <sql id="Blob_Column_List" >
+    introduction, abbotresume
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.jungle.bean.ClxjmainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from clxjmain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.ClxjmainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from clxjmain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from clxjmain
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from clxjmain
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jungle.bean.ClxjmainExample" >
+    delete from clxjmain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jungle.bean.ClxjmainWithBLOBs" >
+    insert into clxjmain (id, name, type1, 
+      type2, belong_city, first_img_big, 
+      first_img_min, carousel_img, price, 
+      address, longitude, latitude, 
+      reserve_num, recommend, joinid, 
+      checkStatus, abbot, opentime, 
+      createtime, mobile, introduction, 
+      abbotresume)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type1,jdbcType=BIT}, 
+      #{type2,jdbcType=BIT}, #{belongCity,jdbcType=VARCHAR}, #{firstImgBig,jdbcType=VARCHAR}, 
+      #{firstImgMin,jdbcType=VARCHAR}, #{carouselImg,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{address,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{reserveNum,jdbcType=INTEGER}, #{recommend,jdbcType=BIT}, #{joinid,jdbcType=INTEGER}, 
+      #{checkstatus,jdbcType=INTEGER}, #{abbot,jdbcType=VARCHAR}, #{opentime,jdbcType=TIMESTAMP}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{mobile,jdbcType=VARCHAR}, #{introduction,jdbcType=LONGVARCHAR}, 
+      #{abbotresume,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jungle.bean.ClxjmainWithBLOBs" >
+    insert into clxjmain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type1 != null" >
+        type1,
+      </if>
+      <if test="type2 != null" >
+        type2,
+      </if>
+      <if test="belongCity != null" >
+        belong_city,
+      </if>
+      <if test="firstImgBig != null" >
+        first_img_big,
+      </if>
+      <if test="firstImgMin != null" >
+        first_img_min,
+      </if>
+      <if test="carouselImg != null" >
+        carousel_img,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="reserveNum != null" >
+        reserve_num,
+      </if>
+      <if test="recommend != null" >
+        recommend,
+      </if>
+      <if test="joinid != null" >
+        joinid,
+      </if>
+      <if test="checkstatus != null" >
+        checkStatus,
+      </if>
+      <if test="abbot != null" >
+        abbot,
+      </if>
+      <if test="opentime != null" >
+        opentime,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="abbotresume != null" >
+        abbotresume,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type1 != null" >
+        #{type1,jdbcType=BIT},
+      </if>
+      <if test="type2 != null" >
+        #{type2,jdbcType=BIT},
+      </if>
+      <if test="belongCity != null" >
+        #{belongCity,jdbcType=VARCHAR},
+      </if>
+      <if test="firstImgBig != null" >
+        #{firstImgBig,jdbcType=VARCHAR},
+      </if>
+      <if test="firstImgMin != null" >
+        #{firstImgMin,jdbcType=VARCHAR},
+      </if>
+      <if test="carouselImg != null" >
+        #{carouselImg,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="reserveNum != null" >
+        #{reserveNum,jdbcType=INTEGER},
+      </if>
+      <if test="recommend != null" >
+        #{recommend,jdbcType=BIT},
+      </if>
+      <if test="joinid != null" >
+        #{joinid,jdbcType=INTEGER},
+      </if>
+      <if test="checkstatus != null" >
+        #{checkstatus,jdbcType=INTEGER},
+      </if>
+      <if test="abbot != null" >
+        #{abbot,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null" >
+        #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="abbotresume != null" >
+        #{abbotresume,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jungle.bean.ClxjmainExample" resultType="java.lang.Integer" >
+    select count(*) from clxjmain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update clxjmain
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type1 != null" >
+        type1 = #{record.type1,jdbcType=BIT},
+      </if>
+      <if test="record.type2 != null" >
+        type2 = #{record.type2,jdbcType=BIT},
+      </if>
+      <if test="record.belongCity != null" >
+        belong_city = #{record.belongCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstImgBig != null" >
+        first_img_big = #{record.firstImgBig,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstImgMin != null" >
+        first_img_min = #{record.firstImgMin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carouselImg != null" >
+        carousel_img = #{record.carouselImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.longitude != null" >
+        longitude = #{record.longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.latitude != null" >
+        latitude = #{record.latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserveNum != null" >
+        reserve_num = #{record.reserveNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.recommend != null" >
+        recommend = #{record.recommend,jdbcType=BIT},
+      </if>
+      <if test="record.joinid != null" >
+        joinid = #{record.joinid,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkstatus != null" >
+        checkStatus = #{record.checkstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.abbot != null" >
+        abbot = #{record.abbot,jdbcType=VARCHAR},
+      </if>
+      <if test="record.opentime != null" >
+        opentime = #{record.opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduction != null" >
+        introduction = #{record.introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.abbotresume != null" >
+        abbotresume = #{record.abbotresume,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update clxjmain
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      type1 = #{record.type1,jdbcType=BIT},
+      type2 = #{record.type2,jdbcType=BIT},
+      belong_city = #{record.belongCity,jdbcType=VARCHAR},
+      first_img_big = #{record.firstImgBig,jdbcType=VARCHAR},
+      first_img_min = #{record.firstImgMin,jdbcType=VARCHAR},
+      carousel_img = #{record.carouselImg,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DECIMAL},
+      address = #{record.address,jdbcType=VARCHAR},
+      longitude = #{record.longitude,jdbcType=VARCHAR},
+      latitude = #{record.latitude,jdbcType=VARCHAR},
+      reserve_num = #{record.reserveNum,jdbcType=INTEGER},
+      recommend = #{record.recommend,jdbcType=BIT},
+      joinid = #{record.joinid,jdbcType=INTEGER},
+      checkStatus = #{record.checkstatus,jdbcType=INTEGER},
+      abbot = #{record.abbot,jdbcType=VARCHAR},
+      opentime = #{record.opentime,jdbcType=TIMESTAMP},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      introduction = #{record.introduction,jdbcType=LONGVARCHAR},
+      abbotresume = #{record.abbotresume,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update clxjmain
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      type1 = #{record.type1,jdbcType=BIT},
+      type2 = #{record.type2,jdbcType=BIT},
+      belong_city = #{record.belongCity,jdbcType=VARCHAR},
+      first_img_big = #{record.firstImgBig,jdbcType=VARCHAR},
+      first_img_min = #{record.firstImgMin,jdbcType=VARCHAR},
+      carousel_img = #{record.carouselImg,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DECIMAL},
+      address = #{record.address,jdbcType=VARCHAR},
+      longitude = #{record.longitude,jdbcType=VARCHAR},
+      latitude = #{record.latitude,jdbcType=VARCHAR},
+      reserve_num = #{record.reserveNum,jdbcType=INTEGER},
+      recommend = #{record.recommend,jdbcType=BIT},
+      joinid = #{record.joinid,jdbcType=INTEGER},
+      checkStatus = #{record.checkstatus,jdbcType=INTEGER},
+      abbot = #{record.abbot,jdbcType=VARCHAR},
+      opentime = #{record.opentime,jdbcType=TIMESTAMP},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      mobile = #{record.mobile,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jungle.bean.ClxjmainWithBLOBs" >
+    update clxjmain
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type1 != null" >
+        type1 = #{type1,jdbcType=BIT},
+      </if>
+      <if test="type2 != null" >
+        type2 = #{type2,jdbcType=BIT},
+      </if>
+      <if test="belongCity != null" >
+        belong_city = #{belongCity,jdbcType=VARCHAR},
+      </if>
+      <if test="firstImgBig != null" >
+        first_img_big = #{firstImgBig,jdbcType=VARCHAR},
+      </if>
+      <if test="firstImgMin != null" >
+        first_img_min = #{firstImgMin,jdbcType=VARCHAR},
+      </if>
+      <if test="carouselImg != null" >
+        carousel_img = #{carouselImg,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="reserveNum != null" >
+        reserve_num = #{reserveNum,jdbcType=INTEGER},
+      </if>
+      <if test="recommend != null" >
+        recommend = #{recommend,jdbcType=BIT},
+      </if>
+      <if test="joinid != null" >
+        joinid = #{joinid,jdbcType=INTEGER},
+      </if>
+      <if test="checkstatus != null" >
+        checkStatus = #{checkstatus,jdbcType=INTEGER},
+      </if>
+      <if test="abbot != null" >
+        abbot = #{abbot,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null" >
+        opentime = #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="abbotresume != null" >
+        abbotresume = #{abbotresume,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jungle.bean.ClxjmainWithBLOBs" >
+    update clxjmain
+    set name = #{name,jdbcType=VARCHAR},
+      type1 = #{type1,jdbcType=BIT},
+      type2 = #{type2,jdbcType=BIT},
+      belong_city = #{belongCity,jdbcType=VARCHAR},
+      first_img_big = #{firstImgBig,jdbcType=VARCHAR},
+      first_img_min = #{firstImgMin,jdbcType=VARCHAR},
+      carousel_img = #{carouselImg,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      address = #{address,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      reserve_num = #{reserveNum,jdbcType=INTEGER},
+      recommend = #{recommend,jdbcType=BIT},
+      joinid = #{joinid,jdbcType=INTEGER},
+      checkStatus = #{checkstatus,jdbcType=INTEGER},
+      abbot = #{abbot,jdbcType=VARCHAR},
+      opentime = #{opentime,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=LONGVARCHAR},
+      abbotresume = #{abbotresume,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jungle.bean.Clxjmain" >
+    update clxjmain
+    set name = #{name,jdbcType=VARCHAR},
+      type1 = #{type1,jdbcType=BIT},
+      type2 = #{type2,jdbcType=BIT},
+      belong_city = #{belongCity,jdbcType=VARCHAR},
+      first_img_big = #{firstImgBig,jdbcType=VARCHAR},
+      first_img_min = #{firstImgMin,jdbcType=VARCHAR},
+      carousel_img = #{carouselImg,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      address = #{address,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      reserve_num = #{reserveNum,jdbcType=INTEGER},
+      recommend = #{recommend,jdbcType=BIT},
+      joinid = #{joinid,jdbcType=INTEGER},
+      checkStatus = #{checkstatus,jdbcType=INTEGER},
+      abbot = #{abbot,jdbcType=VARCHAR},
+      opentime = #{opentime,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

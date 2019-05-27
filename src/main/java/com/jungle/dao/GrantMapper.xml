@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jungle.dao.GrantMapper" >
+  <resultMap id="BaseResultMap" type="com.jungle.bean.Grant" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="donationname" property="donationname" jdbcType="VARCHAR" />
+    <result column="goods" property="goods" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="DECIMAL" />
+    <result column="worthless" property="worthless" jdbcType="DECIMAL" />
+    <result column="useto" property="useto" jdbcType="VARCHAR" />
+    <result column="recipients" property="recipients" jdbcType="VARCHAR" />
+    <result column="donationTime" property="donationtime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, donationname, goods, num, worthless, useto, recipients, donationTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.GrantExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from grant
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from grant
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from grant
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jungle.bean.GrantExample" >
+    delete from grant
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jungle.bean.Grant" >
+    insert into grant (id, donationname, goods, 
+      num, worthless, useto, 
+      recipients, donationTime)
+    values (#{id,jdbcType=INTEGER}, #{donationname,jdbcType=VARCHAR}, #{goods,jdbcType=VARCHAR}, 
+      #{num,jdbcType=DECIMAL}, #{worthless,jdbcType=DECIMAL}, #{useto,jdbcType=VARCHAR}, 
+      #{recipients,jdbcType=VARCHAR}, #{donationtime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jungle.bean.Grant" >
+    insert into grant
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="donationname != null" >
+        donationname,
+      </if>
+      <if test="goods != null" >
+        goods,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="worthless != null" >
+        worthless,
+      </if>
+      <if test="useto != null" >
+        useto,
+      </if>
+      <if test="recipients != null" >
+        recipients,
+      </if>
+      <if test="donationtime != null" >
+        donationTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="donationname != null" >
+        #{donationname,jdbcType=VARCHAR},
+      </if>
+      <if test="goods != null" >
+        #{goods,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="worthless != null" >
+        #{worthless,jdbcType=DECIMAL},
+      </if>
+      <if test="useto != null" >
+        #{useto,jdbcType=VARCHAR},
+      </if>
+      <if test="recipients != null" >
+        #{recipients,jdbcType=VARCHAR},
+      </if>
+      <if test="donationtime != null" >
+        #{donationtime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jungle.bean.GrantExample" resultType="java.lang.Integer" >
+    select count(*) from grant
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update grant
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.donationname != null" >
+        donationname = #{record.donationname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goods != null" >
+        goods = #{record.goods,jdbcType=VARCHAR},
+      </if>
+      <if test="record.num != null" >
+        num = #{record.num,jdbcType=DECIMAL},
+      </if>
+      <if test="record.worthless != null" >
+        worthless = #{record.worthless,jdbcType=DECIMAL},
+      </if>
+      <if test="record.useto != null" >
+        useto = #{record.useto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recipients != null" >
+        recipients = #{record.recipients,jdbcType=VARCHAR},
+      </if>
+      <if test="record.donationtime != null" >
+        donationTime = #{record.donationtime,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update grant
+    set id = #{record.id,jdbcType=INTEGER},
+      donationname = #{record.donationname,jdbcType=VARCHAR},
+      goods = #{record.goods,jdbcType=VARCHAR},
+      num = #{record.num,jdbcType=DECIMAL},
+      worthless = #{record.worthless,jdbcType=DECIMAL},
+      useto = #{record.useto,jdbcType=VARCHAR},
+      recipients = #{record.recipients,jdbcType=VARCHAR},
+      donationTime = #{record.donationtime,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jungle.bean.Grant" >
+    update grant
+    <set >
+      <if test="donationname != null" >
+        donationname = #{donationname,jdbcType=VARCHAR},
+      </if>
+      <if test="goods != null" >
+        goods = #{goods,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="worthless != null" >
+        worthless = #{worthless,jdbcType=DECIMAL},
+      </if>
+      <if test="useto != null" >
+        useto = #{useto,jdbcType=VARCHAR},
+      </if>
+      <if test="recipients != null" >
+        recipients = #{recipients,jdbcType=VARCHAR},
+      </if>
+      <if test="donationtime != null" >
+        donationTime = #{donationtime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jungle.bean.Grant" >
+    update grant
+    set donationname = #{donationname,jdbcType=VARCHAR},
+      goods = #{goods,jdbcType=VARCHAR},
+      num = #{num,jdbcType=DECIMAL},
+      worthless = #{worthless,jdbcType=DECIMAL},
+      useto = #{useto,jdbcType=VARCHAR},
+      recipients = #{recipients,jdbcType=VARCHAR},
+      donationTime = #{donationtime,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

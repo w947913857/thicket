@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jungle.dao.UserinforMapper" >
+  <resultMap id="BaseResultMap" type="com.jungle.bean.Userinfor" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_sex" property="userSex" jdbcType="BIT" />
+    <result column="user_work" property="userWork" jdbcType="VARCHAR" />
+    <result column="user_contact" property="userContact" jdbcType="VARCHAR" />
+    <result column="user_address" property="userAddress" jdbcType="VARCHAR" />
+    <result column="user_marriage" property="userMarriage" jdbcType="BIT" />
+    <result column="user_department" property="userDepartment" jdbcType="INTEGER" />
+    <result column="user_employTime" property="userEmploytime" jdbcType="TIMESTAMP" />
+    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+    <result column="user_education" property="userEducation" jdbcType="VARCHAR" />
+    <result column="user_loginName" property="userLoginname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_id, user_name, user_sex, user_work, user_contact, user_address, user_marriage, 
+    user_department, user_employTime, user_password, user_education, user_loginName
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.UserinforExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from userinfor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userinfor
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userinfor
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jungle.bean.UserinforExample" >
+    delete from userinfor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jungle.bean.Userinfor" >
+    insert into userinfor (user_id, user_name, user_sex, 
+      user_work, user_contact, user_address, 
+      user_marriage, user_department, user_employTime, 
+      user_password, user_education, user_loginName
+      )
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userSex,jdbcType=BIT}, 
+      #{userWork,jdbcType=VARCHAR}, #{userContact,jdbcType=VARCHAR}, #{userAddress,jdbcType=VARCHAR}, 
+      #{userMarriage,jdbcType=BIT}, #{userDepartment,jdbcType=INTEGER}, #{userEmploytime,jdbcType=TIMESTAMP}, 
+      #{userPassword,jdbcType=VARCHAR}, #{userEducation,jdbcType=VARCHAR}, #{userLoginname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jungle.bean.Userinfor" >
+    insert into userinfor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="userWork != null" >
+        user_work,
+      </if>
+      <if test="userContact != null" >
+        user_contact,
+      </if>
+      <if test="userAddress != null" >
+        user_address,
+      </if>
+      <if test="userMarriage != null" >
+        user_marriage,
+      </if>
+      <if test="userDepartment != null" >
+        user_department,
+      </if>
+      <if test="userEmploytime != null" >
+        user_employTime,
+      </if>
+      <if test="userPassword != null" >
+        user_password,
+      </if>
+      <if test="userEducation != null" >
+        user_education,
+      </if>
+      <if test="userLoginname != null" >
+        user_loginName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=BIT},
+      </if>
+      <if test="userWork != null" >
+        #{userWork,jdbcType=VARCHAR},
+      </if>
+      <if test="userContact != null" >
+        #{userContact,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null" >
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userMarriage != null" >
+        #{userMarriage,jdbcType=BIT},
+      </if>
+      <if test="userDepartment != null" >
+        #{userDepartment,jdbcType=INTEGER},
+      </if>
+      <if test="userEmploytime != null" >
+        #{userEmploytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userEducation != null" >
+        #{userEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="userLoginname != null" >
+        #{userLoginname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jungle.bean.UserinforExample" resultType="java.lang.Integer" >
+    select count(*) from userinfor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update userinfor
+    <set >
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null" >
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userSex != null" >
+        user_sex = #{record.userSex,jdbcType=BIT},
+      </if>
+      <if test="record.userWork != null" >
+        user_work = #{record.userWork,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userContact != null" >
+        user_contact = #{record.userContact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAddress != null" >
+        user_address = #{record.userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userMarriage != null" >
+        user_marriage = #{record.userMarriage,jdbcType=BIT},
+      </if>
+      <if test="record.userDepartment != null" >
+        user_department = #{record.userDepartment,jdbcType=INTEGER},
+      </if>
+      <if test="record.userEmploytime != null" >
+        user_employTime = #{record.userEmploytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.userPassword != null" >
+        user_password = #{record.userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userEducation != null" >
+        user_education = #{record.userEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userLoginname != null" >
+        user_loginName = #{record.userLoginname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update userinfor
+    set user_id = #{record.userId,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      user_sex = #{record.userSex,jdbcType=BIT},
+      user_work = #{record.userWork,jdbcType=VARCHAR},
+      user_contact = #{record.userContact,jdbcType=VARCHAR},
+      user_address = #{record.userAddress,jdbcType=VARCHAR},
+      user_marriage = #{record.userMarriage,jdbcType=BIT},
+      user_department = #{record.userDepartment,jdbcType=INTEGER},
+      user_employTime = #{record.userEmploytime,jdbcType=TIMESTAMP},
+      user_password = #{record.userPassword,jdbcType=VARCHAR},
+      user_education = #{record.userEducation,jdbcType=VARCHAR},
+      user_loginName = #{record.userLoginname,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jungle.bean.Userinfor" >
+    update userinfor
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=BIT},
+      </if>
+      <if test="userWork != null" >
+        user_work = #{userWork,jdbcType=VARCHAR},
+      </if>
+      <if test="userContact != null" >
+        user_contact = #{userContact,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null" >
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userMarriage != null" >
+        user_marriage = #{userMarriage,jdbcType=BIT},
+      </if>
+      <if test="userDepartment != null" >
+        user_department = #{userDepartment,jdbcType=INTEGER},
+      </if>
+      <if test="userEmploytime != null" >
+        user_employTime = #{userEmploytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userPassword != null" >
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userEducation != null" >
+        user_education = #{userEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="userLoginname != null" >
+        user_loginName = #{userLoginname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jungle.bean.Userinfor" >
+    update userinfor
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=BIT},
+      user_work = #{userWork,jdbcType=VARCHAR},
+      user_contact = #{userContact,jdbcType=VARCHAR},
+      user_address = #{userAddress,jdbcType=VARCHAR},
+      user_marriage = #{userMarriage,jdbcType=BIT},
+      user_department = #{userDepartment,jdbcType=INTEGER},
+      user_employTime = #{userEmploytime,jdbcType=TIMESTAMP},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      user_education = #{userEducation,jdbcType=VARCHAR},
+      user_loginName = #{userLoginname,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

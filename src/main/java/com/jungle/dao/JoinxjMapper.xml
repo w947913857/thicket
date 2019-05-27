@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jungle.dao.JoinxjMapper" >
+  <resultMap id="BaseResultMap" type="com.jungle.bean.Joinxj" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="xjname" property="xjname" jdbcType="VARCHAR" />
+    <result column="houseno" property="houseno" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="houseidcard" property="houseidcard" jdbcType="VARCHAR" />
+    <result column="housephone" property="housephone" jdbcType="VARCHAR" />
+    <result column="housemobile" property="housemobile" jdbcType="VARCHAR" />
+    <result column="houseperson" property="houseperson" jdbcType="VARCHAR" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="message" property="message" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="jointime" property="jointime" jdbcType="VARCHAR" />
+    <result column="joinstatus" property="joinstatus" jdbcType="INTEGER" />
+    <result column="fileurl" property="fileurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, xjname, houseno, address, postcode, houseidcard, housephone, housemobile, houseperson, 
+    idcard, phone, message, uid, jointime, joinstatus, fileurl
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.JoinxjExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from joinxj
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from joinxj
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from joinxj
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jungle.bean.JoinxjExample" >
+    delete from joinxj
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jungle.bean.Joinxj" >
+    insert into joinxj (id, xjname, houseno, 
+      address, postcode, houseidcard, 
+      housephone, housemobile, houseperson, 
+      idcard, phone, message, 
+      uid, jointime, joinstatus, 
+      fileurl)
+    values (#{id,jdbcType=INTEGER}, #{xjname,jdbcType=VARCHAR}, #{houseno,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, #{houseidcard,jdbcType=VARCHAR}, 
+      #{housephone,jdbcType=VARCHAR}, #{housemobile,jdbcType=VARCHAR}, #{houseperson,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=INTEGER}, #{jointime,jdbcType=VARCHAR}, #{joinstatus,jdbcType=INTEGER}, 
+      #{fileurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jungle.bean.Joinxj" >
+    insert into joinxj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="xjname != null" >
+        xjname,
+      </if>
+      <if test="houseno != null" >
+        houseno,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="postcode != null" >
+        postcode,
+      </if>
+      <if test="houseidcard != null" >
+        houseidcard,
+      </if>
+      <if test="housephone != null" >
+        housephone,
+      </if>
+      <if test="housemobile != null" >
+        housemobile,
+      </if>
+      <if test="houseperson != null" >
+        houseperson,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="jointime != null" >
+        jointime,
+      </if>
+      <if test="joinstatus != null" >
+        joinstatus,
+      </if>
+      <if test="fileurl != null" >
+        fileurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="xjname != null" >
+        #{xjname,jdbcType=VARCHAR},
+      </if>
+      <if test="houseno != null" >
+        #{houseno,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="houseidcard != null" >
+        #{houseidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="housephone != null" >
+        #{housephone,jdbcType=VARCHAR},
+      </if>
+      <if test="housemobile != null" >
+        #{housemobile,jdbcType=VARCHAR},
+      </if>
+      <if test="houseperson != null" >
+        #{houseperson,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="jointime != null" >
+        #{jointime,jdbcType=VARCHAR},
+      </if>
+      <if test="joinstatus != null" >
+        #{joinstatus,jdbcType=INTEGER},
+      </if>
+      <if test="fileurl != null" >
+        #{fileurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jungle.bean.JoinxjExample" resultType="java.lang.Integer" >
+    select count(*) from joinxj
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update joinxj
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.xjname != null" >
+        xjname = #{record.xjname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.houseno != null" >
+        houseno = #{record.houseno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postcode != null" >
+        postcode = #{record.postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.houseidcard != null" >
+        houseidcard = #{record.houseidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.housephone != null" >
+        housephone = #{record.housephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.housemobile != null" >
+        housemobile = #{record.housemobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.houseperson != null" >
+        houseperson = #{record.houseperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null" >
+        idcard = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.message != null" >
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.jointime != null" >
+        jointime = #{record.jointime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.joinstatus != null" >
+        joinstatus = #{record.joinstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.fileurl != null" >
+        fileurl = #{record.fileurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update joinxj
+    set id = #{record.id,jdbcType=INTEGER},
+      xjname = #{record.xjname,jdbcType=VARCHAR},
+      houseno = #{record.houseno,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      postcode = #{record.postcode,jdbcType=VARCHAR},
+      houseidcard = #{record.houseidcard,jdbcType=VARCHAR},
+      housephone = #{record.housephone,jdbcType=VARCHAR},
+      housemobile = #{record.housemobile,jdbcType=VARCHAR},
+      houseperson = #{record.houseperson,jdbcType=VARCHAR},
+      idcard = #{record.idcard,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      message = #{record.message,jdbcType=VARCHAR},
+      uid = #{record.uid,jdbcType=INTEGER},
+      jointime = #{record.jointime,jdbcType=VARCHAR},
+      joinstatus = #{record.joinstatus,jdbcType=INTEGER},
+      fileurl = #{record.fileurl,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jungle.bean.Joinxj" >
+    update joinxj
+    <set >
+      <if test="xjname != null" >
+        xjname = #{xjname,jdbcType=VARCHAR},
+      </if>
+      <if test="houseno != null" >
+        houseno = #{houseno,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="houseidcard != null" >
+        houseidcard = #{houseidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="housephone != null" >
+        housephone = #{housephone,jdbcType=VARCHAR},
+      </if>
+      <if test="housemobile != null" >
+        housemobile = #{housemobile,jdbcType=VARCHAR},
+      </if>
+      <if test="houseperson != null" >
+        houseperson = #{houseperson,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="jointime != null" >
+        jointime = #{jointime,jdbcType=VARCHAR},
+      </if>
+      <if test="joinstatus != null" >
+        joinstatus = #{joinstatus,jdbcType=INTEGER},
+      </if>
+      <if test="fileurl != null" >
+        fileurl = #{fileurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jungle.bean.Joinxj" >
+    update joinxj
+    set xjname = #{xjname,jdbcType=VARCHAR},
+      houseno = #{houseno,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      postcode = #{postcode,jdbcType=VARCHAR},
+      houseidcard = #{houseidcard,jdbcType=VARCHAR},
+      housephone = #{housephone,jdbcType=VARCHAR},
+      housemobile = #{housemobile,jdbcType=VARCHAR},
+      houseperson = #{houseperson,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      jointime = #{jointime,jdbcType=VARCHAR},
+      joinstatus = #{joinstatus,jdbcType=INTEGER},
+      fileurl = #{fileurl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
