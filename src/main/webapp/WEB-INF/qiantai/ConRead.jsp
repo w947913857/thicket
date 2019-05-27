@@ -71,7 +71,7 @@ function loginOut(){
         </div>
     </div>
 </div>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 </body>
 <script type="text/javascript">
 function playSound1()

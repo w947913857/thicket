@@ -124,7 +124,7 @@ function loginOut(){
 
 </div>
 <script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 <script type="text/javascript">
 var em1 = document.getElementById("em1");
 var em2 = document.getElementById("em2");

@@ -201,6 +201,6 @@ function loginOut(){
 		window.location.href ="<%=path%>/ConEntryPage.jsp"; 
 		}
 </script>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 </body>
 </html>

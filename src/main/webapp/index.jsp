@@ -9,22 +9,22 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>丛林闲居网</title>
-    <link rel="stylesheet" href="${path}/qiantai/style/cy.css">
-    <link rel="stylesheet" href="${path}/qiantai/style/style.css">
-    <script  src="${path}/js/laydate.js"></script>
-    <link rel="stylesheet" href="${path}/qiantai/style/laydate.css">
-    <link rel="stylesheet" href="${path}/qiantai/js/skins/molv/laydate.css">
-    <script src="${path}/qiantai/js/jquery.min.js"></script><!--
-    <script type='text/javascript' src='js/citylist.js'></script>
-    --><script type='text/javascript' src='${path}/qiantai/js/querycity.js'></script>
-    <link href='${path}/qiantai/style/cityquery.css' rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="${path}/static/style/cy.css">
+    <link rel="stylesheet" href="${path}/static/style/style.css">
+    <script  src="${path}/static/js/laydate.js"></script>
+    <link rel="stylesheet" href="${path}/static/style/laydate.css">
+    <link rel="stylesheet" href="${path}/static/js/skins/molv/laydate.css">
+    <script src="${path}/static/js/jquery.min.js"></script>
+    <script type='text/javascript' src='${path}/static/js/citylist.js'></script>
+    <script type='text/javascript' src='${path}/static/js/querycity.js'></script>
+    <link href='${path}/static/style/cityquery.css' rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 <!--首页TOP-->
 
 <!--首页banner-->
-<jsp:include  page="/qiantai/head.jsp" />
+<%--<jsp:include  page="/qiantai/head.jsp" />--%>
 <script type="text/javascript">
     function Alllogin(){
         window.location.href = "login.jsp?returnurl=/clxjmain!Homepage.action";
@@ -37,12 +37,12 @@
 <div class="index-lbt">
     <div id="scrollPics">
         <ul class="slider">
-            <li><img src="${clxjBackurl }/roll/home/lbt1.png" class="lower" width="100%" height="380px"/>
+                <li><img src="${path}/static/roll/home/lbt1.png" class="lower" width="100%" height="380px"/>
             </li>
-            <li><img src="${clxjBackurl }/roll/home/lbt2.png" width="100%" height="380px"/></li>
-            <li><img src="${clxjBackurl }/roll/home/lbt3.png" width="100%" height="380px"/></li>
-            <li><img src="${clxjBackurl }/roll/home/lbt4.png" width="100%" height="380px"/></li>
-            <li><img src="${clxjBackurl }/roll/home/lbt5.png" width="100%" height="380px"/></li>
+            <li><img src="${path}/static/roll/home/lbt2.png" width="100%" height="380px"/></li>
+            <li><img src="${path}/static/roll/home/lbt3.png" width="100%" height="380px"/></li>
+            <li><img src="${path}/static/roll/home/lbt4.png" width="100%" height="380px"/></li>
+            <li><img src="${path}/static/roll/home/lbt5.png" width="100%" height="380px"/></li><%--${clxjBackurl }--%>
         </ul>
         <ul class="num">
             <li class="on"></li>
@@ -63,7 +63,6 @@
                 </ul>
             </div>
             <div class="TabContent">
-
                 <div class="myTab_Content">
                     <div class="lbttj">
                         <div class="tj-top">
@@ -403,9 +402,9 @@
                 <p class="title">爱心捐赠</p>
                 <p><input type="text" placeholder="请输入捐款人姓名"></p>
                 <p><input type="text" placeholder="请输入捐款金额"></p>
-                <p><a href="${path}/qiantai/FoundDonations.jsp"><input type="submit" value="在线捐赠"></a></p>
+                <p><a href="${path}/FoundDonations.jsp"><input type="submit" value="在线捐赠"></a></p>
             </div>
-            <form action="${path}/qiantai/DonationLove.jsp" method="post">
+            <form action="${path}/DonationLove.jsp" method="post">
                 <div class="il-two">
                     <p class="title">善款查询</p>
                     <p><input type="text" name="donationname" placeholder="要查找人姓名"></p>
@@ -415,9 +414,9 @@
             </form>
         </div>
         <div class="ic-con">
-            <p class="ckax"><img src="${path}/qiantai/images/07.png">实时查看基金会总爱心金额</p>
+            <p class="ckax"><img src="${path}/images/07.png">实时查看基金会总爱心金额</p>
             <p class="money">${moneyCountStr }</p>
-            <p><img src="${path}/qiantai/images/jk_03.jpg"></p>
+            <p><img src="${path}/images/jk_03.jpg"></p>
             <p class="xz"><span class="one"><a href="${path}/qiantai/PLpublicity.jsp">捐款支出细则</a> </span><span class="two"><a href="${path}/qiantai/FoundIndex.jsp">基金会简介</a> </span></p>
         </div>
         <div class="ic-right">
@@ -444,9 +443,9 @@
 </div>
 
 
-<%@ include  file="/qiantai/bottom.jsp"%>
-<script src="${path}/qiantai/js/index.js"></script>
-<script src="${path}/qiantai/clxj/js/scorll.js"></script>
+<%--<%@ include  file="/qiantai/bottom.jsp"%>--%>
+<script src="${path}/static/js"></script>
+<script src="${path}/js/scorll.js"></script>
 <script type="text/javascript">
 /*
     function(){

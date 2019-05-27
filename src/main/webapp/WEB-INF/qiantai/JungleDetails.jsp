@@ -267,7 +267,7 @@ function loginOut(){
     </div>
 </div>
 
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 
 
 <script type="text/javascript">

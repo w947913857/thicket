@@ -167,7 +167,7 @@ function Allregister(){
  <%@ include  file="bottom.jsp"%>
 
 
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 <script type="text/javascript">
     !function () {
         laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库

@@ -111,7 +111,7 @@ window.location.href = "<%=path%>/login.jsp";
 </div>
 
 <script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 <script type="text/javascript">
 function updateOrder(update){
 	var oid = 'oid'+update;

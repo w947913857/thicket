@@ -151,7 +151,7 @@ function loginOut(){
     </div>
 </div>     
 </c:if>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 <script type="text/javascript">
 var wait=120;//倒计时获取验证码时间
 var checks = false; //一个全局变量，用来最终判断表单是否可以提交

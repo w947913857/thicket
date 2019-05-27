@@ -68,7 +68,7 @@ function loginOut(){
   </div>
 </div>
 <script src="<%=path %>/js/jquery.js"></script>
-<script src="<%=path %>/js/index.js"></script> 
+<script src="<%=path %>/static/js"></script>
 <script type="text/javascript">
 function Message(type){
 	var qq;

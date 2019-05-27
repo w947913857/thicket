@@ -172,7 +172,7 @@ function loginOut(){
 
 </div>
 <script src="js/jquery.js"></script>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 <script type="text/javascript">
 $(function(){
 	if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder

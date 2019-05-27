@@ -103,7 +103,7 @@ function loginOut(){
 		/* document.getElementById("myForm").submit(); */
 	}
 </script>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 
 </body>
 </html>

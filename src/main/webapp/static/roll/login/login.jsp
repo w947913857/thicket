@@ -28,27 +28,11 @@
 <body>     
 <%Date date = new Date(); %>   
  <div class="basicTab" style="width: 100%;height: 100%;" id="check">   
-		<div name="滚动图1" align="center">     
-			<img  src="<%=path%>/roll/home/lbt1.png?id=<%=date %>" width="100%" height="380px;">        
+		<div name="登录广告" align="center">     
+			<img src="<%=path%>/static/roll/login/lbt1.png?id=<%=date %>" width="100%" height="380px;">
 			<input type="button" value="更换" onclick="changeImg(1)" style="margin-top: 30px;"/>
-		</div>       
-		<div name="滚动图2" align="center">
-			 <img  src="<%=path%>/roll/home/lbt2.png?id=<%=date %>" width="100%" height="380px;">
-			 <input type="button" value="更换" onclick="changeImg(2)" style="margin-top: 30px;"/>  
-		</div>
-		<div name="滚动图3" align="center">
-			<img  src="<%=path%>/roll/home/lbt3.png?id=<%=date %>" width="100%" height="380px;">
-			<input type="button" value="更换" onclick="changeImg(3)"/> 
-		</div>  
-		<div name="滚动图4" align="center"> 
-			<img  src="<%=path%>/roll/home/lbt4.png?id=<%=date %>" width="100%" height="380px;">
-			<input type="button" value="更换" onclick="changeImg(4)"/> 
-		</div>
-		<div name="滚动图5" align="center">          
-			<img  src="<%=path%>/roll/home/lbt5.png?id=<%=date %>" width="100%" height="380px;">
-			<input type="button" value="更换" onclick="changeImg(5)"/> 
-		</div>
-	</div>
+		</div>        
+	</div>  
 <script type="text/javascript"> 
 window.onload = getLine();  
 //获取地址栏
@@ -67,21 +51,8 @@ function GetRequest() {
 function changeImg(line){
 	switch (line) { 
 	case 1: 
-		top.Dialog.open({URL:"<%=path%>/roll/home/update/update1.jsp",Title:"滚动图1",Width:300,Height:100});   
+		top.Dialog.open({URL:"<%=path%>/roll/login/update/update1.jsp",Title:"登录广告",Width:300,Height:100});   
 		break;  
-	case 2:
-		top.Dialog.open({URL:"<%=path%>/roll/home/update/update2.jsp",Title:"滚动图2",Width:300,Height:100});    
-		break; 
-	case 3:   
-		top.Dialog.open({URL:"<%=path%>/roll/home/update/update3.jsp",Title:"滚动图3",Width:300,Height:100}); 		
-		break;
-	case 4:   
-		top.Dialog.open({URL:"<%=path%>/roll/home/update/update4.jsp",Title:"滚动图4",Width:300,Height:100}); 
-		break; 
-	case 5:    
-		top.Dialog.open({URL:"<%=path%>/roll/home/update/update5.jsp",Title:"滚动图5",Width:300,Height:100}); 
-		break;
-
 	}
 }	
 function updateLine(line){  

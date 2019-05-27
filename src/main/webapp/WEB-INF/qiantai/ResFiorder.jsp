@@ -166,7 +166,7 @@ window.location.href = "<%=path%>/login.jsp";
     </ul>
     <p><a href="#"><img src="images/index_48.jpg"></a><a href="#"><img src="images/index_50.jpg"></a><a href="#"><img src="images/index_52.jpg"></a> <a href="#"><img src="images/index_54.jpg"></a><a href="#"><img src="images/index_56.jpg"></a> <a href="#"><img src="images/index_58.jpg"></a>    </p>
 </footer>
-<script type="text/javascript" src="<%=path %>/js/index.js"></script>  
+<script type="text/javascript" src="<%=path %>/static/js"></script>
 <script type="text/javascript"> 
 	var checks = false;
 		function checkDate(time,price){ 

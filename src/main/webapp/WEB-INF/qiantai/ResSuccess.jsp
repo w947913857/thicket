@@ -67,7 +67,7 @@ window.location.href = "<%=path%>/login.jsp";
     <p><a href="#"><img src="images/index_48.jpg"></a><a href="#"><img src="images/index_50.jpg"></a><a href="#"><img src="images/index_52.jpg"></a> <a href="#"><img src="images/index_54.jpg"></a><a href="#"><img src="images/index_56.jpg"></a> <a href="#"><img src="images/index_58.jpg"></a>    </p>
 </footer>
 <script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 
 </body>
 </html>

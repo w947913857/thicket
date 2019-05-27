@@ -96,7 +96,7 @@
 
 
 <script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 <script type="text/javascript">
 getCount();
 var count; 

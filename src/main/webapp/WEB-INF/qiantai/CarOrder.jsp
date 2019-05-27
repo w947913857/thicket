@@ -192,7 +192,7 @@ function loginOut(){
 </div>
 </div>
 </div>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 <script type="text/javascript">
 function subForm(){
 	var sub = document.getElementById("sub");

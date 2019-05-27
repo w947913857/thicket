@@ -150,7 +150,7 @@
     </div>
 </div>
 
-<script src="../js/index.js"></script>
+<script src="../../../js"></script>
 
 </body>
 </html>

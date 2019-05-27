@@ -445,7 +445,7 @@ function loginOut(){
   
  <%@ include  file="bottom.jsp"%>
 
-<script src="<%=path%>/js/index.js"></script>
+<script src="<%=path%>/static/js"></script>
 <script src="<%=path%>/clxj/js/scorll.js"></script> 
 <script type="text/javascript"><!--
 !function(){

@@ -94,7 +94,7 @@ function loginOut(){
 
 </div>
 <script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 <script type="text/javascript">
 var checks = false;//全局变量，用于判断是否能下一步
 var wait=120;//倒计时获取验证码时间

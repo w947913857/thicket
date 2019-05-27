@@ -134,7 +134,7 @@ window.location.href = "<%=path%>/login.jsp";
         </div>
  <%@ include  file="bottom.jsp"%>
 </div>
-<script src="<%=path %>/js/index.js"></script> 
+<script src="<%=path %>/static/js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#reguserForm").validate({

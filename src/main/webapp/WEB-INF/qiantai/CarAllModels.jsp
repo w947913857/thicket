@@ -98,7 +98,7 @@ window.location.href = "<%=path%>/login.jsp";
 
 </div>
 <script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 <script src="js/jquery.slides.js" type="text/javascript"></script>
 <script>
 //限制textarea输入长度

@@ -93,7 +93,7 @@ function loginOut(){
 
 </div>
 <script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script src="../../js"></script>
 
 </body>
 </html>
