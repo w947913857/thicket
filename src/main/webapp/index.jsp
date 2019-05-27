@@ -25,10 +25,10 @@
 <!--首页TOP-->
 
 <!--首页banner-->
-<%--<jsp:include  page="/qiantai/head.jsp" />--%>
+<jsp:include  page="/WEB-INF/qiantai/head.jsp" />
 <script type="text/javascript">
     function Alllogin(){
-        window.location.href = "login.jsp?returnurl=/clxjmain!Homepage.action";
+        window.location.href = "login?returnurl=/clxjmain!Homepage.action";
     }
     function loginOut(){
         window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/clxjmain!Homepage.action";
@@ -38,12 +38,11 @@
 <div class="index-lbt">
     <div id="scrollPics">
         <ul class="slider">
-                <li><img src="${path}/static/roll/home/lbt1.png" class="lower" width="100%" height="380px"/>
-            </li>
+            <li><img src="${path}/static/roll/home/lbt1.png" class="lower" width="100%" height="380px"/></li>
             <li><img src="${path}/static/roll/home/lbt2.png" width="100%" height="380px"/></li>
             <li><img src="${path}/static/roll/home/lbt3.png" width="100%" height="380px"/></li>
             <li><img src="${path}/static/roll/home/lbt4.png" width="100%" height="380px"/></li>
-            <li><img src="${path}/static/roll/home/lbt5.png" width="100%" height="380px"/></li><%--${clxjBackurl }--%>
+            <li><img src="${path}/static/roll/home/lbt5.png" width="100%" height="380px"/></li>
         </ul>
         <ul class="num">
             <li class="on"></li>

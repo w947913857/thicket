@@ -8,29 +8,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      <title>丛林闲居</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
-    <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/style/cy.css">
+    <link rel="stylesheet" href="/static/style/style.css">
+    <script type="text/javascript" src="<%=path%>/static/js/jquery.js"></script>
 </head>
 <script language="javascript">
-   function enterkey() {   
+   function enterkey() {
    if (event.keyCode == 13){
 	   login();  
     }
    }
 </script>
-<body onkeydown="enterkey()"> 
+<body onkeydown="enterkey()">
 <!--登录页TOP-->   
 <%
 	String type = request.getParameter("type");
 %>
 <div class="index-top1">
     <div class="left">
-        <span class="one"><a href="                   "><img src="images/logo1.png" height="64px" width="158px"></a></span>
+        <span class="one"><a href="                   "><img src="/static/images/logo1.png" height="64px" width="158px"></a></span>
     </div>
     <div class="right1"> 
         <div class="three1">
-            <span><img src="images/index_03.png"></span>
+            <span><img src="/static/images/index_03.png"></span>
             <ul>
                 <li class="rx">客户服务热线:</li>
                 <li class="phone">400-688-6798</li>
@@ -58,7 +58,7 @@
  
     <div class="cgxd3">
         <div class="cgxd-main" style="padding-top:30px;"> 
-            <p class="xdcg"><img src="images/dlcg.png">  </p>
+            <p class="xdcg"><img src="/static/images/dlcg.png">  </p>
             <p class="ddbh"><em id="em"></em></p>
         </div>  
     </div>
@@ -75,7 +75,7 @@
         <li>江西省丛林闲居投资有限公司，工业和信息化部网站备案许可证编号：赣ICP备15010915号</li>
         <li>Copyright © 2015 <a href="#">丛林闲居</a>  版权所有 3wcl.com | 客服中心：400-688-6798</li>
     </ul>
-    <p><a href="#"><img src="images/index_48.jpg"></a><a href="#"><img src="images/index_50.jpg"></a><a href="#"><img src="images/index_52.jpg"></a> <a href="#"><img src="images/index_54.jpg"></a><a href="#"><img src="images/index_56.jpg"></a> <a href="#"><img src="images/index_58.jpg"></a>    </p>
+    <p><a href="#"><img src="/static/images/index_48.jpg"></a><a href="#"><img src="/static/images/index_50.jpg"></a><a href="#"><img src="/static/images/index_52.jpg"></a> <a href="#"><img src="/static/images/index_54.jpg"></a><a href="#"><img src="/static/images/index_56.jpg"></a> <a href="#"><img src="/static/images/index_58.jpg"></a>    </p>
 </footer>
 <script type="text/javascript">
 var checks = false;
@@ -109,6 +109,8 @@ function checkYZM(){
 	}
 }  
 function checkUsername(){
+    var name=document.getElementById("username").value;
+    alert(name);
 	var phoneNum = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/; //手机号码
 	var phoneNumCheck = !!(username.value).match(phoneNum);
 	if(!phoneNumCheck){ 

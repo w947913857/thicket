@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%--<%@ taglib prefix="s" uri="/struts-tags" %>--%>
 <%
 	String path = request.getContextPath();
 %>
@@ -10,24 +10,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>丛林闲居-闲居-列表页</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
-    <script src="js/laydate.js"></script>
-    <link rel="stylesheet" href="style/laydate.css">
-    <link rel="stylesheet" href="js/molv/laydate.css">
-    <script src="js/jquery.min.js"></script>
-    <!--<script type='text/javascript' src='js/citylist.js'></script>-->
-    <script type='text/javascript' src='js/querycity1.js'></script>
-    <link href='style/cityquery.css' rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/static/style/cy.css">
+    <link rel="stylesheet" href="/static/style/style.css">
+    <script src="/static/js/laydate.js"></script>
+    <link rel="stylesheet" href="/static/style/laydate.css">
+    <link rel="stylesheet" href="/static/js/molv/laydate.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script type='text/javascript' src='/static/js/citylist.js'></script>
+    <script type='text/javascript' src='/static/js/querycity1.js'></script>
+    <link href='/static/style/cityquery.css' rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!--首页TOP-->
  
 <!--首页banner-->
-  <jsp:include  page="head.jsp" />
+  <jsp:include  page="/WEB-INF/qiantai/head.jsp" />
  <script type="text/javascript">
 function Alllogin(){
-	window.location.href = "login.jsp?returnurl=/clxjmain!selXjOfPage.action";
+	window.location.href = "login?returnurl=/clxjmain!selXjOfPage.action";
 } 
 function loginOut(){
 	window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/clxjmain!selXjOfPage.action";
@@ -39,12 +39,11 @@ function Allregister(){
 <div class="index-lbt">
     <div id="scrollPics">
         <ul class="slider">
-             <li><img src="${clxjBackurl }/roll/home/lbt1.png" class="lower" width="100%" height="380px"/>
-            </li>
-            <li><img src="${clxjBackurl }/roll/home/lbt2.png" width="100%" height="380px"/></li>
-            <li><img src="${clxjBackurl }/roll/home/lbt3.png" width="100%" height="380px"/></li>
-            <li><img src="${clxjBackurl }/roll/home/lbt4.png" width="100%" height="380px"/></li>
-            <li><img src="${clxjBackurl }/roll/home/lbt5.png" width="100%" height="380px"/></li>
+            <li><img src="${path}/static/roll/home/lbt1.png" class="lower" width="100%" height="380px"/></li>
+            <li><img src="${path}/static/roll/home/lbt2.png" width="100%" height="380px"/></li>
+            <li><img src="${path}/static/roll/home/lbt3.png" width="100%" height="380px"/></li>
+            <li><img src="${path}/static/roll/home/lbt4.png" width="100%" height="380px"/></li>
+            <li><img src="${path}/static/roll/home/lbt5.png" width="100%" height="380px"/></li>
         </ul> 
         <ul class="num">
             <li class="on"></li>

@@ -58,11 +58,11 @@ String str_date3 = formatter2.format(currentTime); //将Date型日期时间转�
 <div class="index-top">
     <div class="index-top3">
     <div class="left"> 
-        <span class="one"><a href="                   "><img width="158" height="64" src="images/logo1.png"></a></span>
-        <span class="two"><img src="images/index_q.png"></span>
+        <span class="one"><a href="                   "><img width="158" height="64" src="static/images/logo1.png"></a></span>
+        <span class="two"><img src="static/images/index_q.png"></span>
 
         <div class="three"> 
-            <span><img src="images/index_03.png"></span>
+            <span><img src="static/images/index_03.png"></span>
             <ul>
                 <li class="rx">客户服务热线:</li>
                 <li class="phone">400-688-6798</li>
@@ -70,9 +70,9 @@ String str_date3 = formatter2.format(currentTime); //将Date型日期时间转�
         </div>
     </div>
     <div class="right">
-        <p class="one"><img src="images/index_06.jpg"></p>
-        <p class="two"><img src="images/e_03.jpg"></p> 
-        <p class="three none"><img width="104" height="105" src="images/weixin.png"></p>
+        <p class="one"><img src="static/images/index_06.jpg"></p>
+        <p class="two"><img src="static/images/e_03.jpg"></p>
+        <p class="three none"><img width="104" height="105" src="static/images/weixin.png"></p>
     </div> 
     </div> 
 </div>
@@ -80,9 +80,9 @@ String str_date3 = formatter2.format(currentTime); //将Date型日期时间转�
 <div class="index-banner">
     <div class="index-banner1">
     <ul>
-        <li><a href="">首页</a></li> 
-        <li><a href="<%=path %>/clxjmain!selClOfPage.action?clxjmain.type2=true">丛林</a></li>
-        <li><a href="<%=path %>/clxjmain!selXjOfPage.action?clxjmain.type2=false">闲居</a></li>
+        <li><a href="">首页</a></li>
+        <li><a href="clxjmain">丛林</a></li>
+        <li><a href="JungleList">闲居</a></li>
         <li><a href="ConEntryPage.jsp">忏悔</a></li>
         <li><a href="FoundIndex.jsp">基金会</a></li>
         <li><a href="joincl.jsp">加盟</a></li>
