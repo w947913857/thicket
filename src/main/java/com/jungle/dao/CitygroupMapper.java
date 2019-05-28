@@ -18,6 +18,8 @@ public interface CitygroupMapper {
 
     List<Citygroup> selectByExample(CitygroupExample example);
 
+    List<Citygroup> selectMany();
+
     Citygroup selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Citygroup record, @Param("example") CitygroupExample example);

@@ -21,6 +21,8 @@ public interface ClxjmainMapper {
 
     List<Clxjmain> selectByExample(ClxjmainExample example);
 
+    List<Clxjmain> selectByWhere(Clxjmain clxjmain);
+
     ClxjmainWithBLOBs selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") ClxjmainWithBLOBs record, @Param("example") ClxjmainExample example);

@@ -45,12 +45,18 @@ public class pageController {
         return "qiantai/right";
     }
 
-
+    /**
+     * 跳转丛林界面
+     * @return
+     */
     @RequestMapping("clxjmain")
     public String clxjmain() {
         return "qiantai/clxjmain";
     }
-
+    /**
+     * 跳转闲居界面
+     * @return
+     */
     @RequestMapping("JungleList")
     public String JungleList() {
         return "qiantai/JungleList";

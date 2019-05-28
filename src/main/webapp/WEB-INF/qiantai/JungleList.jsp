@@ -57,11 +57,13 @@ function Allregister(){
         <div class="gjcl">
             <div class="lbttj">
                 <div class="tj-top">
-                    <span <c:if test="${citytype ==true}"> class="gnxjac"</c:if> <c:if test="${citytype ==null}"> class="gnxjac"</c:if>>国内闲居</span ><span <c:if test="${citytype ==false}"> class="gnxjac"</c:if>>国际闲居</span>
+                    <span id="gn" <c:if test="${citytype ==true}"> class="gnxjac"</c:if> <c:if test="${citytype ==null}"> class="gnxjac"</c:if> onclick="gn()">国内闲居</span ><span id="gj" <c:if test="${citytype ==true}"> class="gnxjac"</c:if> onclick="gj()">国际闲居</span>
                 </div> 
                 <div class="tj-bottom">
                     <div <c:if test="${citytype ==true}">class="xj"</c:if><c:if test="${citytype ==false}">class="xj none"</c:if> <c:if test="${citytype ==null}"> class="xj"</c:if>>
-                     <form action="<%=path %>/clxjmain!selXjOfPage.action" method="post" onsubmit="getCity('10',ones)"> 
+                     <form action="selectJungle" method="post" onsubmit="getCity('10',ones)">
+                         <input type="hidden" id="type1" name="type1" value="1"><%--设置国内外--%>
+                         <input type="hidden" name="type2" value="0"><%--闲居--%>
                         <table>
                             <tr>
                                 <td>目的地</td>
@@ -72,7 +74,7 @@ function Allregister(){
                             </tr>
                             <tr>
                                 <td>入住</td>
-                                <td><p><input name="startTime" class="laydate-icon" id="demo1" <c:if test="${startTime !=null}">value="${startTime }"</c:if><c:if test="${startTime ==null}">value="2018-2-3"</c:if> >
+                                <td><p><input name="createtime" class="laydate-icon" id="demo1" <c:if test="${startTime !=null}">value="${startTime }"</c:if><c:if test="${startTime ==null}">value="2018-2-3"</c:if> >
                                 </p>
 
                                     <p>退房<input name="endTime" class="laydate-icon" id="demo2" <c:if test="${endTime !=null}">value="${endTime }"</c:if><c:if test="${endTime ==null}">value="2019-1-1"</c:if>>
@@ -80,7 +82,7 @@ function Allregister(){
                             </tr>
                             <tr>  
                                 <td>关键词</td>
-                                <td class="sec"><input type="text" name="clxjmain.name"   <c:if test="${cityname==null }">placeholder="请输入地标/商圈/景点"</c:if> <c:if test="${cityname!=null }">value="${cityname }"</c:if> id="gnxjkey" ></td>
+                                <td class="sec"><input type="text" name="name"   <c:if test="${cityname==null }">placeholder="请输入地标/商圈/景点"</c:if> <c:if test="${cityname!=null }">value="${cityname }"</c:if> id="gnxjkey" ></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -89,45 +91,16 @@ function Allregister(){
                         </table> 
                         </form>
                     </div>
-                    <div <c:if test="${citytype ==true}">class="xj none"</c:if> <c:if test="${citytype ==false}">class="xj"</c:if> <c:if test="${citytype ==null}"> class="xj none"</c:if>>
-                    <form action="<%=path %>/clxjmain!selXjOfPage.action" method="post" onsubmit="getCity('00',oness)"> 
-                    <table>
-                        <tr>
-                            <td>目的地</td>
-                            <td class="sec"><input type="text" <c:if test="${cityzw!=null }">value="${cityzw }"</c:if>  <c:if test="${citypy!=null }"> data-wholename="${citypy }"</c:if><c:if test="${citypy==null }"> data-wholename=""</c:if> placeholder="请输入城市名" id='oness'  data-wholename=""></td>
-                            <input type="hidden" name="clxjmain.belong_city" id="city00"/>
-                             <input type="hidden" name="clxjmain.type1" value="false"/>
-                             <input type="hidden" name="clxjmain.type2" value="false"/>
-                        </tr>
-                        <tr>
-                            <td>入住</td>
-                            <td><p><input name="startTime" class="laydate-icon" id="demo3" <c:if test="${startTime !=null}">value="${startTime }"</c:if><c:if test="${startTime ==null}">value="2018-2-1"</c:if>>
-                            </p>
-
-                                <p>退房<input name="endTime" class="laydate-icon" id="demo4" <c:if test="${endTime !=null}">value="${endTime }"</c:if><c:if test="${endTime ==null}">value="2019-4-14"</c:if>>
-                                </p></td> 
-                        </tr>
-                        <tr> 
-                            <td>关键词</td>
-                            <td class="sec"><input type="text" name="clxjmain.name" <c:if test="${cityname==null }">placeholder="请输入地标/商圈/景点"</c:if> <c:if test="${cityname!=null }">value="${cityname }"</c:if>  id="gjxjkey" ></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td class="ses sec"><input type="submit" value="搜索"  />  </td>
-                        </tr>
-                    </table>
-                    </form>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="lby">
-<c:forEach items="${page.list}" var="x"> 
+<c:forEach items="${JungleList}" var="x">
     <div class="lby-xy">
         <div class="lby-left">
-            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${x.id}"><img width="296" height="188" src=${clxjBackurl }${x.first_img_min }></a>
+            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${x.id}"><img width="296" height="188" src=${clxjBackurl }${x.firstImgMin }></a>
         </div>
         <div class="lby-right">
             <p class="title"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${x.id}">${x.name }</a></p>
@@ -137,11 +110,11 @@ function Allregister(){
         <div class="lby-pos">
             <div>
                 <p class="one">
-                    <span><i>${x.ccount }</i></span>
+                    <span><i>${x.reserveNum }</i></span>
                     <span>闲居评价</span>
                 </p>
                 <p class="two">
-                    <span><i>${x.hpl }</i></span> 
+                    <span><%--<i>${x.hpl }</i>--%></span>
                     <span>好评/10分</span>
                 </p>
                 <p class="yd">
@@ -168,6 +141,20 @@ function Allregister(){
 
 <script src="../../js"></script>
 <script type="text/javascript">
+    function gn() {
+        var arr=document.getElementById("gn");
+        var arr1=document.getElementById("gj");
+        document.getElementById("type1").value=1;
+        arr.classList.add("gnxjac");
+        arr1.classList.remove("gnxjac");
+    }
+    function gj() {
+        var arr=document.getElementById("gn");
+        var arr1=document.getElementById("gj");
+        document.getElementById("type1").value=0;
+        arr.classList.remove("gnxjac");
+        arr1.classList.add("gnxjac");
+    }
     !function () {
         laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
         laydate({elem: '#demo1'});//绑定元素
@@ -176,19 +163,19 @@ function Allregister(){
         laydate({elem: '#demo4'});//绑定元素
     }();
 
-    //var labelFromcity = new Array(); 
-    //labelFromcity ['热门城市'] = new Array(2,41,54,119,25,50,187,182,77,122,42,196,106,136,188,17,22,16,37,67,88,159,143,176,14,58,136,73);  
-   //labelFromcity ['A-F'] = new Array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,32,33,34,35,36,37,38,39); 
-    //labelFromcity ['G-J'] = new Array(40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85);  
-    //labelFromcity ['K-N'] = new Array(86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124); 
-    //labelFromcity ['O-W'] = new Array(125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184); 
+    //var labelFromcity = new Array();
+    //labelFromcity ['热门城市'] = new Array(2,41,54,119,25,50,187,182,77,122,42,196,106,136,188,17,22,16,37,67,88,159,143,176,14,58,136,73);
+   //labelFromcity ['A-F'] = new Array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,32,33,34,35,36,37,38,39);
+    //labelFromcity ['G-J'] = new Array(40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85);
+    //labelFromcity ['K-N'] = new Array(86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124);
+    //labelFromcity ['O-W'] = new Array(125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184);
     //labelFromcity ['X-Z'] = new Array(185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231);
 
     //var interlabelFromcity = new Array();
     //interlabelFromcity ['国际城市'] = new Array(1001,1002,1003,1004,1005,1006,1007,1008,1009);
-    //var hotList = new Array(14,15,16,17,18,19); 
+    //var hotList = new Array(14,15,16,17,18,19);
 //新方法，从数据库获得每种类型的城市的id
-var labelFromcity = new Array(); 
+var labelFromcity = new Array();
 labelFromcity['热门城市'] = new Array();  
 labelFromcity ['A-F'] = new Array(); 
 labelFromcity ['G-J'] = new Array();  
@@ -198,46 +185,48 @@ labelFromcity ['X-Z'] = new Array();
 var interlabelFromcity = new Array();
 interlabelFromcity ['国际城市'] = new Array();
 var hotList = new Array(14,15,16,17,18,19);
-$.ajax({  
+$.ajax({
     type : "post",  
-     url : "<%=path %>/city!selCityType.action",  
+     url : "selectCityType",
      data: {},
      dataType: "json",
      async : false,     
-     success : function(results){   
-         for(var i =0;i<results.citytypes.rm.length;i++){
-        	 labelFromcity['热门城市'][i]=results.citytypes.rm[i];
+     success : function(results){
+        console.log(results);
+         for(var i =0;i<results.rm.length;i++){
+        	 labelFromcity['热门城市'][i]=results.rm[i].cid;
           }
-         for(var i =0;i<results.citytypes.a_f.length;i++){
-        	 labelFromcity[['A-F']][i]=results.citytypes.a_f[i];
+         for(var i =0;i<results.a_f.length;i++){
+        	 labelFromcity[['A-F']][i]=results.a_f[i].cid;
           }
-         for(var i =0;i<results.citytypes.g_j.length;i++){
-        	 labelFromcity[['G-J']][i]=results.citytypes.g_j[i];
+         for(var i =0;i<results.g_j.length;i++){
+        	 labelFromcity[['G-J']][i]=results.g_j[i].cid;
           }  
-         for(var i =0;i<results.citytypes.k_n.length;i++){
-        	 labelFromcity[['K-N']][i]=results.citytypes.k_n[i];
+         for(var i =0;i<results.k_n.length;i++){
+        	 labelFromcity[['K-N']][i]=results.k_n[i].cid;
           }  
-         for(var i =0;i<results.citytypes.o_w.length;i++){
-        	 labelFromcity[['O-W']][i]=results.citytypes.o_w[i];
+         for(var i =0;i<results.o_w.length;i++){
+        	 labelFromcity[['O-W']][i]=results.o_w[i].cid;
           }  
-         for(var i =0;i<results.citytypes.x_z.length;i++){
-        	 labelFromcity[['X-Z']][i]=results.citytypes.x_z[i];
+         for(var i =0;i<results.x_z.length;i++){
+        	 labelFromcity[['X-Z']][i]=results.x_z[i].cid;
           }
-         for(var i =0;i<results.citytypes.gjcs.length;i++){
-        	 interlabelFromcity ['国际城市'][i]=results.citytypes.gjcs[i];
+         for(var i =0;i<results.gjcs.length;i++){
+        	 interlabelFromcity ['国际城市'][i]=results.gjcs[i].cid;
           }    
      }   
-}); 
+});
     $(document).ready(function(){
     	var citysFlight=new Array();
     	//新方法，加载页面的时候把所有的城市的数据加载出来
     	$.ajax({  
             type : "post",  
-             url : "<%=path %>/city!initializeCity.action",  
+             url : "selectCityTypeAll",
              data: {},
              dataType: "json",
              async : false,     
-             success : function(results){  
+             success : function(results){
+                console.log(results.citys)
                  for(var i =0;i<results.citys.length;i++){
                 	 citysFlight[results.citys[i].id]=new Array('',results.citys[i].chinese,results.citys[i].pinyin,results.citys[i].abbreviations);
                      }

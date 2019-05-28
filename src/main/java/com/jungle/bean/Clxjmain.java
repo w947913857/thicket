@@ -21,6 +21,8 @@ public class Clxjmain {
 
     private Long price;
 
+    private String introduction;
+
     private String address;
 
     private String longitude;
@@ -37,14 +39,22 @@ public class Clxjmain {
 
     private String abbot;
 
-    private Date opentime;
+    private String opentime;
 
-    private Date createtime;
+    private String createtime;
 
     private String mobile;
 
     public Integer getId() {
         return id;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
     public void setId(Integer id) {
@@ -179,19 +189,19 @@ public class Clxjmain {
         this.abbot = abbot == null ? null : abbot.trim();
     }
 
-    public Date getOpentime() {
+    public String getOpentime() {
         return opentime;
     }
 
-    public void setOpentime(Date opentime) {
+    public void setOpentime(String opentime) {
         this.opentime = opentime;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 

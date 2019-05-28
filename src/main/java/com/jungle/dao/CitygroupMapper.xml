@@ -6,6 +6,18 @@
     <result column="cid" property="cid" jdbcType="INTEGER" />
     <result column="gid" property="gid" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="ManyResultMap" type="com.jungle.bean.Citygroup" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="gid" property="gid" jdbcType="INTEGER" />
+    <association property="city" javaType="com.jungle.bean.City">
+      <id column="id" property="id" />
+      <result column="chinese" property="chinese" />
+      <result column="pinyin" property="pinyin" />
+      <result column="abbreviations" property="abbreviations" />
+      <result column="status" property="status" />
+    </association>
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -67,6 +79,9 @@
   <sql id="Base_Column_List" >
     id, cid, gid
   </sql>
+  <sql id="Many_Column_List" >
+    cg.id, cg.cid, cg.gid, c.id, c.chinese, c.pinyin, c.abbreviations, c.status
+  </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.CitygroupExample" >
     select
     <if test="distinct" >
@@ -80,6 +95,11 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+  </select>
+  <select id="selectMany" resultMap="ManyResultMap">
+    select
+    <include refid="Many_Column_List" />
+    from citygroup cg left join city c on cg.cid=c.id
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

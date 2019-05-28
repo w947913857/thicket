@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, chinese, pinyin, abbreviations, status
+      id, chinese, pinyin, abbreviations, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.CityExample" >
     select
