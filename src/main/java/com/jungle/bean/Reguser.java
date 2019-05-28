@@ -112,4 +112,21 @@ public class Reguser {
     public void setEnableflag(Boolean enableflag) {
         this.enableflag = enableflag;
     }
+
+    @Override
+    public String toString() {
+        return "Reguser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", sex=" + sex +
+                ", realname='" + realname + '\'' +
+                ", idcard='" + idcard + '\'' +
+                ", city=" + city +
+                ", regtime=" + regtime +
+                ", enableflag=" + enableflag +
+                '}';
+    }
 }

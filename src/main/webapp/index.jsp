@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
-    request.setAttribute("path",path);
+    request.setAttribute("path", path);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.10 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,25 +12,26 @@
     <title>丛林闲居网</title>
     <link rel="stylesheet" href="${path}/static/style/cy.css">
     <link rel="stylesheet" href="${path}/static/style/style.css">
-    <script  src="${path}/static/js/laydate.js"></script>
+    <script src="${path}/static/js/laydate.js"></script>
     <link rel="stylesheet" href="${path}/static/style/laydate.css">
     <link rel="stylesheet" href="${path}/static/js/skins/molv/laydate.css">
     <script src="${path}/static/js/jquery.min.js"></script>
     <script type='text/javascript' src='${path}/static/js/citylist.js'></script>
     <script type='text/javascript' src='${path}/static/js/querycity.js'></script>
-    <link href='${path}/static/style/cityquery.css' rel="stylesheet" type="text/css" />
+    <link href='${path}/static/style/cityquery.css' rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
 <!--首页TOP-->
 
 <!--首页banner-->
-<jsp:include  page="/WEB-INF/qiantai/head.jsp" />
+<jsp:include page="/WEB-INF/qiantai/head.jsp"/>
 <script type="text/javascript">
-    function Alllogin(){
-        window.location.href = "login?returnurl=/clxjmain!Homepage.action";
+    function Alllogin() {
+        window.location.href = "/login";
     }
-    function loginOut(){
+
+    function loginOut() {
         window.location.href = "<%=path%>/reguser!loginOut.action?returnurl=/clxjmain!Homepage.action";
     }
 </script>
@@ -71,56 +72,66 @@
                         <div class="tj-bottom tj-bottom2">
                             <div class="xj">
                                 <!-- 国内丛林 -->
-                                <form action="<%=path %>/clxjmain!selClOfPage.action" method="post" onsubmit="getCity('11',yyqx)">
+                                <form action="<%=path %>/clxjmain!selClOfPage.action" method="post"
+                                      onsubmit="getCity('11',yyqx)">
                                     <table>
                                         <tr>
                                             <td>目的地</td>
-                                            <td class="sec"><input type="text" placeholder="请输入城市名" id="yyqx" data-wholename=""></td>
+                                            <td class="sec"><input type="text" placeholder="请输入城市名" id="yyqx"
+                                                                   data-wholename=""></td>
                                             <input type="hidden" name="clxjmain.belong_city" id="city11"/>
                                             <input type="hidden" name="clxjmain.type1" value="true"/>
                                             <input type="hidden" name="clxjmain.type2" value="true"/>
                                         </tr>
                                         <tr>
                                             <td>入住</td>
-                                            <td><p><input name="startTime" class="laydate-icon ts" id="demo5" value="2019-1-11"> </p>
+                                            <td><p><input name="startTime" class="laydate-icon ts" id="demo5"
+                                                          value="2019-1-11"></p>
 
-                                                <p>退房：<input name="endTime" class="laydate-icon" id="demo6" value="2019-8-21"> </p></td>
+                                                <p>退房：<input name="endTime" class="laydate-icon" id="demo6"
+                                                             value="2019-8-21"></p></td>
                                         </tr>
                                         <tr>
                                             <td>关键词</td>
-                                            <td class="sec"><input  type="text" name="clxjmain.name" placeholder="请输入地标/商圈/景点" id="gnclkey"></td>
+                                            <td class="sec"><input type="text" name="clxjmain.name"
+                                                                   placeholder="请输入地标/商圈/景点" id="gnclkey"></td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td class="ses sec"><input type="submit" value="搜索" ></td>
+                                            <td class="ses sec"><input type="submit" value="搜索"></td>
                                         </tr>
                                     </table>
                                 </form>
                             </div>
                             <div class="xj none">
                                 <!-- 国外丛林 -->
-                                <form action="<%=path %>/clxjmain!selClOfPage.action" method="post" onsubmit="getCity('01',jackson)">
+                                <form action="<%=path %>/clxjmain!selClOfPage.action" method="post"
+                                      onsubmit="getCity('01',jackson)">
                                     <table>
                                         <tr>
                                             <td>目的地</td>
-                                            <td class="sec"><input type="text" placeholder="请输入城市名" id="jackson" data-wholename=""></td>
+                                            <td class="sec"><input type="text" placeholder="请输入城市名" id="jackson"
+                                                                   data-wholename=""></td>
                                             <input type="hidden" name="clxjmain.belong_city" id="city01"/>
                                             <input type="hidden" name="clxjmain.type1" value="false"/>
                                             <input type="hidden" name="clxjmain.type2" value="true"/>
                                         </tr>
                                         <tr>
                                             <td>入住</td>
-                                            <td><p><input name="startTime" class="laydate-icon ts" id="demo7" value="2019-1-1"> </p>
+                                            <td><p><input name="startTime" class="laydate-icon ts" id="demo7"
+                                                          value="2019-1-1"></p>
 
-                                                <p>退房：<input name="endTime" class="laydate-icon" id="demo8" value="2019-8-12"> </p></td>
+                                                <p>退房：<input name="endTime" class="laydate-icon" id="demo8"
+                                                             value="2019-8-12"></p></td>
                                         </tr>
                                         <tr>
                                             <td>关键词</td>
-                                            <td class="sec"><input type="text" name="clxjmain.name" placeholder="请输入地标/商圈/景点" id="gjclkey"></td>
+                                            <td class="sec"><input type="text" name="clxjmain.name"
+                                                                   placeholder="请输入地标/商圈/景点" id="gjclkey"></td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td class="ses sec"><input type="submit" value="搜索" ></td>
+                                            <td class="ses sec"><input type="submit" value="搜索"></td>
                                         </tr>
                                     </table>
                                 </form>
@@ -136,12 +147,13 @@
                         <div class="tj-bottom tj-bottom1">
                             <div class="xj">
                                 <!-- 国内闲居 -->
-                                <form action="<%=path %>/clxjmain!selXjOfPage.action" method="post" onsubmit="getCity('10',zmx)">
+                                <form action="<%=path %>/clxjmain!selXjOfPage.action" method="post"
+                                      onsubmit="getCity('10',zmx)">
                                     <table>
                                         <tr>
                                             <td>目的地</td>
                                             <td class="sec ">
-                                                <input type="text"  placeholder="请输入城市名" id="zmx" data-wholename="">
+                                                <input type="text" placeholder="请输入城市名" id="zmx" data-wholename="">
                                                 <input type="hidden" name="clxjmain.belong_city" id="city10"/>
                                                 <input type="hidden" name="clxjmain.type1" value="true"/>
                                                 <input type="hidden" name="clxjmain.type2" value="false"/>
@@ -149,17 +161,20 @@
                                         </tr>
                                         <tr>
                                             <td>入住</td>
-                                            <td><p><input name="startTime" class="laydate-icon ts" id="demo1" value="2019-1-2"> </p>
+                                            <td><p><input name="startTime" class="laydate-icon ts" id="demo1"
+                                                          value="2019-1-2"></p>
 
-                                                <p>退房：<input name="endTime" class="laydate-icon" id="demo2" value="2019-4-12"> </p></td>
+                                                <p>退房：<input name="endTime" class="laydate-icon" id="demo2"
+                                                             value="2019-4-12"></p></td>
                                         </tr>
                                         <tr>
                                             <td>关键词</td>
-                                            <td class="sec"><input type="text" name="clxjmain.name"  placeholder="请输入地标/商圈/景点" id="gnxjkey" ></td>
+                                            <td class="sec"><input type="text" name="clxjmain.name"
+                                                                   placeholder="请输入地标/商圈/景点" id="gnxjkey"></td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td class="ses sec"><input type="submit" value="搜索" > <!-- <a
+                                            <td class="ses sec"><input type="submit" value="搜索"> <!-- <a
                                                 href="#"><img src="images/06.png">所有闲居</a> --></td>
                                         </tr>
                                     </table>
@@ -167,28 +182,33 @@
                             </div>
                             <div class="xj none">
                                 <!-- 国外闲居 -->
-                                <form action="<%=path %>/clxjmain!selXjOfPage.action" method="post" onsubmit="getCity('00',fromcity)">
+                                <form action="<%=path %>/clxjmain!selXjOfPage.action" method="post"
+                                      onsubmit="getCity('00',fromcity)">
                                     <table>
                                         <tr>
                                             <td>目的地</td>
-                                            <td class="sec"><input type="text" placeholder="请输入城市名" id='fromcity' data-wholename=""></td>
+                                            <td class="sec"><input type="text" placeholder="请输入城市名" id='fromcity'
+                                                                   data-wholename=""></td>
                                             <input type="hidden" name="clxjmain.belong_city" id="city00"/>
                                             <input type="hidden" name="clxjmain.type1" value="false"/>
                                             <input type="hidden" name="clxjmain.type2" value="false"/>
                                         </tr>
                                         <tr>
                                             <td>入住</td>
-                                            <td><p><input name="startTime" class="laydate-icon ts" id="demo3" value="2019-2-12"> </p>
+                                            <td><p><input name="startTime" class="laydate-icon ts" id="demo3"
+                                                          value="2019-2-12"></p>
 
-                                                <p>退房：<input name="endTime" name="startTime" class="laydate-icon" id="demo4" value="2019-9-12"> </p></td>
+                                                <p>退房：<input name="endTime" name="startTime" class="laydate-icon"
+                                                             id="demo4" value="2019-9-12"></p></td>
                                         </tr>
                                         <tr>
                                             <td>关键词</td>
-                                            <td class="sec"><input name="clxjmain.name" type="text"  placeholder="请输入地标/商圈/景点" id="gjxjkey"></td>
+                                            <td class="sec"><input name="clxjmain.name" type="text"
+                                                                   placeholder="请输入地标/商圈/景点" id="gjxjkey"></td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td class="ses sec"><input type="submit" value="搜索" ><!-- <a
+                                            <td class="ses sec"><input type="submit" value="搜索"><!-- <a
                                                 href="#"><img src="images/06.png">所有闲居</a></td>-->
                                         </tr>
                                     </table>
@@ -207,25 +227,33 @@
 
         <div class="taq1">
             <div>
-                <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid1}"><img width="466" height="320" src="${clxjBackurl }${top1 }"></a>
+                <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid1}"><img width="466" height="320"
+                                                                                           src="${clxjBackurl }${top1 }"></a>
             </div>
-            <span></span><span class="mfcy"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid1}">${topname1 }</a> </span>
+            <span></span><span class="mfcy"><a
+                href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid1}">${topname1 }</a> </span>
         </div>
         <div class="taq1 spec">
             <div>
-                <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid2}"> <img width="467" height="320" src="${clxjBackurl }${top2 }"></a>
+                <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid2}"> <img width="467" height="320"
+                                                                                            src="${clxjBackurl }${top2 }"></a>
             </div>
-            <span></span><span class="mfcy"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid2}">${topname2 }</a> </span>
+            <span></span><span class="mfcy"><a
+                href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid2}">${topname2 }</a> </span>
         </div>
         <div class="taq2 spec">
             <div>
                 <div>
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid3}"><img width="224" height="141" src="${clxjBackurl }${top3 }"></a>
-                    <span></span><span class="mfcy"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid3}">${topname3 }</a> </span>
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid3}"><img width="224" height="141"
+                                                                                               src="${clxjBackurl }${top3 }"></a>
+                    <span></span><span class="mfcy"><a
+                        href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid3}">${topname3 }</a> </span>
                 </div>
                 <div class="spec2">
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid4}"><img width="224" height="141" src="${clxjBackurl }${top4 }"></a>
-                    <span></span><span class="mfcy"><a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid4}">${topname4 }</a> </span>
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid4}"><img width="224" height="141"
+                                                                                               src="${clxjBackurl }${top4 }"></a>
+                    <span></span><span class="mfcy"><a
+                        href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${topid4}">${topname4 }</a> </span>
                 </div>
             </div>
         </div>
@@ -242,32 +270,43 @@
                     <p class="rm">热门目的地</p>
                     <ul class="city">
                         <c:forEach items="${domesticHotCitys}" var="domestic">
-                            <li><a href="javascript:void(0)" onclick="goOther(1,1,'${domestic.all }')">${domestic.chinese }</a> </li>
+                            <li><a href="javascript:void(0)"
+                                   onclick="goOther(1,1,'${domestic.all }')">${domestic.chinese }</a></li>
                         </c:forEach>
                     </ul>
                 </div>
                 <div class="one-con">
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id1}"><img width="467" height="320" src="${clxjBackurl }${type111 }"></a>
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id1}"><img width="467"
+                                                                                                  height="320"
+                                                                                                  src="${clxjBackurl }${type111 }"></a>
                     <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id1}"><span>${type11name1 }</span></a>
                 </div>
                 <div class="one-right">
                     <div class="or-one">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id2}"> <img width="223" height="142" src="${clxjBackurl }${type112 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id2}"> <img width="223"
+                                                                                                           height="142"
+                                                                                                           src="${clxjBackurl }${type112 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id2}"><span>${type11name2 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id3}"><img width="223" height="141" src="${clxjBackurl }${type113 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id3}"><img width="223"
+                                                                                                          height="141"
+                                                                                                          src="${clxjBackurl }${type113 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id3}"><span>${type11name3 }</span></a>
                         </div>
                     </div>
                     <div class="or-two">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id4}"><img width="224" height="142" src="${clxjBackurl }${type114 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id4}"><img width="224"
+                                                                                                          height="142"
+                                                                                                          src="${clxjBackurl }${type114 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id4}"><span>${type11name4 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id5}"><img  width="224" height="141" src="${clxjBackurl }${type115 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id5}"><img width="224"
+                                                                                                          height="141"
+                                                                                                          src="${clxjBackurl }${type115 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type11id5}"><span>${type11name5 }</span></a>
                         </div>
                     </div>
@@ -278,32 +317,44 @@
                     <p class="rm">热门目的地</p>
                     <ul class="city">
                         <c:forEach items="${domesticHotCitys}" var="domestic2">
-                            <li><a href="javascript:void(0)" onclick="goOther(1,0,'${domestic2.all }')">${domestic2.chinese }</a> </li>
+                            <li><a href="javascript:void(0)"
+                                   onclick="goOther(1,0,'${domestic2.all }')">${domestic2.chinese }</a></li>
                         </c:forEach>
                     </ul>
                 </div>
                 <div class="one-con">
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id1}"><img width="467" height="320" src="${clxjBackurl }${type101 }"></a>
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id1}"><img width="467"
+                                                                                                  height="320"
+                                                                                                  src="${clxjBackurl }${type101 }"></a>
                     <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id1}"><span>${type10name1 }</span></a>
                 </div>
                 <div class="one-right">
                     <div class="or-one">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id2}"><img  width="223" height="142"  src="${clxjBackurl }${type102 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id2}"><img width="223"
+                                                                                                          height="142"
+                                                                                                          src="${clxjBackurl }${type102 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id2}"><span>${type10name2 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id3}"><img width="223" height="141"   src="${clxjBackurl }${type103 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id3}"><img width="223"
+                                                                                                          height="141"
+                                                                                                          src="${clxjBackurl }${type103 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id3}"><span>${type10name3 }</span></a>
                         </div>
                     </div>
                     <div class="or-two">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id4}"><img  width="224" height="142" src="${clxjBackurl }${type104 }"></a>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id4}"> <span>${type10name4 }</span></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id4}"><img width="224"
+                                                                                                          height="142"
+                                                                                                          src="${clxjBackurl }${type104 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id4}">
+                                <span>${type10name4 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id5}"><img  width="224" height="141" src="${clxjBackurl }${type105 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id5}"><img width="224"
+                                                                                                          height="141"
+                                                                                                          src="${clxjBackurl }${type105 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type10id5}"><span>${type10name5 }</span></a>
                         </div>
                     </div>
@@ -323,32 +374,43 @@
                     <p class="rm">热门目的地</p>
                     <ul class="city">
                         <c:forEach items="${abroadHotCitys}" var="abroad">
-                            <li><a href="javascript:void(0)" onclick="goOther(0,1,'${abroad.all }')">${abroad.chinese }</a> </li>
+                            <li><a href="javascript:void(0)"
+                                   onclick="goOther(0,1,'${abroad.all }')">${abroad.chinese }</a></li>
                         </c:forEach>
                     </ul>
                 </div>
                 <div class="one-con">
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id1}"><img width="465"  height="320" src="${clxjBackurl }${type011 }"></a>
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id1}"><img width="465"
+                                                                                                  height="320"
+                                                                                                  src="${clxjBackurl }${type011 }"></a>
                     <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id1}"><span>${type01name1 }</span></a>
                 </div>
                 <div class="one-right">
                     <div class="or-one">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id2}"><img width="223" height="142" src="${clxjBackurl }${type012 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id2}"><img width="223"
+                                                                                                          height="142"
+                                                                                                          src="${clxjBackurl }${type012 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id2}"><span>${type01name2 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id3}"> <img width="225" height="141" src="${clxjBackurl }${type013 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id3}"> <img width="225"
+                                                                                                           height="141"
+                                                                                                           src="${clxjBackurl }${type013 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id3}"><span>${type01name3 }</span></a>
                         </div>
                     </div>
                     <div class="or-two">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id4}"> <img width="224" height="142" src="${clxjBackurl }${type014 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id4}"> <img width="224"
+                                                                                                           height="142"
+                                                                                                           src="${clxjBackurl }${type014 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id4}"><span>${type01name4 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id5}"> <img width="224" height="141" src="${clxjBackurl }${type015 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id5}"> <img width="224"
+                                                                                                           height="141"
+                                                                                                           src="${clxjBackurl }${type015 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type01id5}"><span>${type01name5 }</span></a>
                         </div>
                     </div>
@@ -359,32 +421,44 @@
                     <p class="rm">热门目的地</p>
                     <ul class="city">
                         <c:forEach items="${abroadHotCitys}" var="abroad2">
-                            <li><a href="javascript:void(0)" onclick="goOther(0,0,'${abroad2.all }')">${abroad2.chinese }</a> </li>
+                            <li><a href="javascript:void(0)"
+                                   onclick="goOther(0,0,'${abroad2.all }')">${abroad2.chinese }</a></li>
                         </c:forEach>
                     </ul>
                 </div>
                 <div class="one-con">
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id1}"><img width="465"  height="320" src="${clxjBackurl }${type001 }"></a>
-                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id1}"> <span>${type00name1 }</span></a>
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id1}"><img width="465"
+                                                                                                  height="320"
+                                                                                                  src="${clxjBackurl }${type001 }"></a>
+                    <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id1}">
+                        <span>${type00name1 }</span></a>
                 </div>
                 <div class="one-right">
                     <div class="or-one">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id2}"><img width="223" height="142" src="${clxjBackurl }${type002 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id2}"><img width="223"
+                                                                                                          height="142"
+                                                                                                          src="${clxjBackurl }${type002 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id2}"><span>${type00name2 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id3}"><img width="225" height="141" src="${clxjBackurl }${type003 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id3}"><img width="225"
+                                                                                                          height="141"
+                                                                                                          src="${clxjBackurl }${type003 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id3}"><span>${type00name3 }</span></a>
                         </div>
                     </div>
                     <div class="or-two">
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id4}"><img width="224" height="142" src="${clxjBackurl }${type004 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id4}"><img width="224"
+                                                                                                          height="142"
+                                                                                                          src="${clxjBackurl }${type004 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id4}"><span>${type00name4 }</span></a>
                         </div>
                         <div>
-                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id5}"> <img width="224" height="141" src="${clxjBackurl }${type005 }"></a>
+                            <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id5}"> <img width="224"
+                                                                                                           height="141"
+                                                                                                           src="${clxjBackurl }${type005 }"></a>
                             <a href="<%=path%>/clxjmain!selClxjOfId.action?clxjmain.id=${type00id5}"><span>${type00name5 }</span></a>
                         </div>
                     </div>
@@ -408,7 +482,8 @@
                 <div class="il-two">
                     <p class="title">善款查询</p>
                     <p><input type="text" name="donationname" placeholder="要查找人姓名"></p>
-                    <p><input type="text" name="donationtime" class="laydate-icon" id="demo9" style="margin-left:0px;width:185px;"></p>
+                    <p><input type="text" name="donationtime" class="laydate-icon" id="demo9"
+                              style="margin-left:0px;width:185px;"></p>
                     <p><input type="submit" value="在线查询"></p>
                 </div>
             </form>
@@ -417,13 +492,14 @@
             <p class="ckax"><img src="${path}/images/07.png">实时查看基金会总爱心金额</p>
             <p class="money">${moneyCountStr }</p>
             <p><img src="${path}/images/jk_03.jpg"></p>
-            <p class="xz"><span class="one"><a href="${path}/qiantai/PLpublicity.jsp">捐款支出细则</a> </span><span class="two"><a href="${path}/qiantai/FoundIndex.jsp">基金会简介</a> </span></p>
+            <p class="xz"><span class="one"><a href="${path}/qiantai/PLpublicity.jsp">捐款支出细则</a> </span><span
+                    class="two"><a href="${path}/qiantai/FoundIndex.jsp">基金会简介</a> </span></p>
         </div>
         <div class="ic-right">
             <p>捐款方式 / pattern</p>
             <ul>
                 <li>单位名称： 江西济缘慈善基金会（筹）</li>
-                <li>地       址：   江西省南昌高新开发区高新一路海外大厦北楼4层</li>
+                <li>地 址： 江西省南昌高新开发区高新一路海外大厦北楼4层</li>
                 <li>捐款热线： 400-688-6798</li>
                 <li>邮箱地址：1415917674@qq.com</li>
                 <li>银行户名：江西丛林闲居投资有限公司</li>
@@ -435,10 +511,10 @@
 </div>
 <div id="nav">
     <ul>
-        <li class="c"><a id="a11" href="#a1">推荐</a> </li>
-        <li><a id="a22" href="#a2">国内</a> </li>
-        <li><a id="a33" href="#a3">境外</a> </li>
-        <li><a id="a44" href="#a4">慈善</a> </li>
+        <li class="c"><a id="a11" href="#a1">推荐</a></li>
+        <li><a id="a22" href="#a2">国内</a></li>
+        <li><a id="a33" href="#a3">境外</a></li>
+        <li><a id="a44" href="#a4">慈善</a></li>
     </ul>
 </div>
 
@@ -447,19 +523,19 @@
 <script src="${path}/static/js"></script>
 <script src="${path}/js/scorll.js"></script>
 <script type="text/javascript">
-/*
-    function(){
-        laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
-        laydate({elem: '#demo1'});//绑定元素
-        laydate({elem: '#demo2'});//绑定元素
-        laydate({elem: '#demo3'});//绑定元素
-        laydate({elem: '#demo4'});//绑定元素
-        laydate({elem: '#demo5'});//绑定元素
-        laydate({elem: '#demo6'});//绑定元素
-        laydate({elem: '#demo7'});//绑定元素
-        laydate({elem: '#demo8'});//绑定元素
-        laydate({elem: '#demo9'});//绑定元素
-    }();*/
+    /*
+        function(){
+            laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
+            laydate({elem: '#demo1'});//绑定元素
+            laydate({elem: '#demo2'});//绑定元素
+            laydate({elem: '#demo3'});//绑定元素
+            laydate({elem: '#demo4'});//绑定元素
+            laydate({elem: '#demo5'});//绑定元素
+            laydate({elem: '#demo6'});//绑定元素
+            laydate({elem: '#demo7'});//绑定元素
+            laydate({elem: '#demo8'});//绑定元素
+            laydate({elem: '#demo9'});//绑定元素
+        }();*/
     //新方法，从数据库获得每种类型的城市的id
     var labelFromcity = new Array();
     labelFromcity['热门城市'] = new Array();
@@ -470,59 +546,59 @@
     labelFromcity ['X-Z'] = new Array();
     var interlabelFromcity = new Array();
     interlabelFromcity ['国际城市'] = new Array();
-    var hotList = new Array(14,15,16,17,18,19);
+    var hotList = new Array(14, 15, 16, 17, 18, 19);
     $.ajax({
-        type : "post",
-        url : "<%=path %>/city!selCityType.action",
+        type: "post",
+        url: "<%=path %>/city!selCityType.action",
         data: {},
         dataType: "json",
-        async : false,
-        success : function(results){
-            for(var i =0;i<results.citytypes.rm.length;i++){
-                labelFromcity['热门城市'][i]=results.citytypes.rm[i];
+        async: false,
+        success: function (results) {
+            for (var i = 0; i < results.citytypes.rm.length; i++) {
+                labelFromcity['热门城市'][i] = results.citytypes.rm[i];
             }
-            for(var i =0;i<results.citytypes.a_f.length;i++){
-                labelFromcity[['A-F']][i]=results.citytypes.a_f[i];
+            for (var i = 0; i < results.citytypes.a_f.length; i++) {
+                labelFromcity[['A-F']][i] = results.citytypes.a_f[i];
             }
-            for(var i =0;i<results.citytypes.g_j.length;i++){
-                labelFromcity[['G-J']][i]=results.citytypes.g_j[i];
+            for (var i = 0; i < results.citytypes.g_j.length; i++) {
+                labelFromcity[['G-J']][i] = results.citytypes.g_j[i];
             }
-            for(var i =0;i<results.citytypes.k_n.length;i++){
-                labelFromcity[['K-N']][i]=results.citytypes.k_n[i];
+            for (var i = 0; i < results.citytypes.k_n.length; i++) {
+                labelFromcity[['K-N']][i] = results.citytypes.k_n[i];
             }
-            for(var i =0;i<results.citytypes.o_w.length;i++){
-                labelFromcity[['O-W']][i]=results.citytypes.o_w[i];
+            for (var i = 0; i < results.citytypes.o_w.length; i++) {
+                labelFromcity[['O-W']][i] = results.citytypes.o_w[i];
             }
-            for(var i =0;i<results.citytypes.x_z.length;i++){
-                labelFromcity[['X-Z']][i]=results.citytypes.x_z[i];
+            for (var i = 0; i < results.citytypes.x_z.length; i++) {
+                labelFromcity[['X-Z']][i] = results.citytypes.x_z[i];
             }
-            for(var i =0;i<results.citytypes.gjcs.length;i++){
-                interlabelFromcity ['国际城市'][i]=results.citytypes.gjcs[i];
+            for (var i = 0; i < results.citytypes.gjcs.length; i++) {
+                interlabelFromcity ['国际城市'][i] = results.citytypes.gjcs[i];
             }
         }
     });
-    var citysFlight=new Array();
+    var citysFlight = new Array();
     //新方法，加载页面的时候把所有的城市的数据加载出来
     $.ajax({
-        type : "post",
-        url : "<%=path %>/city!initializeCity.action",
+        type: "post",
+        url: "<%=path %>/city!initializeCity.action",
         data: {},
         dataType: "json",
-        async : false,
-        success : function(results){
-            for(var i =0;i<results.citys.length;i++){
-                citysFlight[results.citys[i].id]=new Array('',results.citys[i].chinese,results.citys[i].pinyin,results.citys[i].abbreviations);
+        async: false,
+        success: function (results) {
+            for (var i = 0; i < results.citys.length; i++) {
+                citysFlight[results.citys[i].id] = new Array('', results.citys[i].chinese, results.citys[i].pinyin, results.citys[i].abbreviations);
             }
         }
     });
     //国内闲居
-    $('#zmx').querycity({'data':citysFlight,'tabs':labelFromcity,'hotList':hotList});
+    $('#zmx').querycity({'data': citysFlight, 'tabs': labelFromcity, 'hotList': hotList});
     //国际闲居
-    $('#fromcity').querycity({'data':citysFlight,'tabs':interlabelFromcity,'hotList':hotList});
+    $('#fromcity').querycity({'data': citysFlight, 'tabs': interlabelFromcity, 'hotList': hotList});
     //国内丛林
-    $('#yyqx').querycity({'data':citysFlight,'tabs':labelFromcity,'hotList':hotList});
+    $('#yyqx').querycity({'data': citysFlight, 'tabs': labelFromcity, 'hotList': hotList});
     //国际丛林
-    $('#jackson').querycity({'data':citysFlight,'tabs':interlabelFromcity,'hotList':hotList});
+    $('#jackson').querycity({'data': citysFlight, 'tabs': interlabelFromcity, 'hotList': hotList});
     //以前的方法，js写死城市数据
     //labelFromcity['热门城市'] = new Array();
     //labelFromcity ['A-F'] = new Array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,32,33,34,35,36,37,38,39);
@@ -535,7 +611,7 @@
     //interlabelFromcity ['国际城市'] = new Array(1001,1002,1003,1004,1005,1006,1007,1008,1009);
     //var hotList = new Array(14,15,16,17,18,19);
 
-    $(document).ready(function(){
+    $(document).ready(function () {
 
     });
 
@@ -543,11 +619,12 @@
     //sttime  入住时间
     //entime  退房时间
     //keyword 关键词
-    function xj(des,sttime,entime,keyword){
-        alert(des+sttime+entime+keyword);
+    function xj(des, sttime, entime, keyword) {
+        alert(des + sttime + entime + keyword);
     }
+
     //将城市转换为拼音+城市名字
-    function getCity(type,id){
+    function getCity(type, id) {
         var citypy;
         var cityzw;
         switch (id) {
@@ -568,23 +645,24 @@
                 cityzw = $('#jackson').val();
                 break;
         }
-        var city = document.getElementById("city"+type);
-        city.value = citypy+"|"+cityzw;
+        var city = document.getElementById("city" + type);
+        city.value = citypy + "|" + cityzw;
     }
-    function goOther(type11,type2,city1){
+
+    function goOther(type11, type2, city1) {
         var city = city1;
         city = encodeURI(city);
         city = encodeURI(city);//注意要两次
         var type1 = false;
-        if(type11==1){
-            type1=true;
-        }else{
+        if (type11 == 1) {
+            type1 = true;
+        } else {
             type1 = false;
         }
-        if(type2==1){
-            window.location.href = "<%=path%>/clxjmain!selClOfPage.action?clxjmain.type2=true&clxjmain.type1="+type1+"&city="+city;
-        }else{
-            window.location.href = "<%=path%>/clxjmain!selXjOfPage.action?clxjmain.type2=false&clxjmain.type1="+type1+"&city="+city;
+        if (type2 == 1) {
+            window.location.href = "<%=path%>/clxjmain!selClOfPage.action?clxjmain.type2=true&clxjmain.type1=" + type1 + "&city=" + city;
+        } else {
+            window.location.href = "<%=path%>/clxjmain!selXjOfPage.action?clxjmain.type2=false&clxjmain.type1=" + type1 + "&city=" + city;
         }
     }
 </script>

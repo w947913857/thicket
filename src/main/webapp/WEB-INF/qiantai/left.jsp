@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	request.setAttribute("path", path);
+%>
 <html>
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
@@ -12,8 +16,8 @@ $(document).ready(function (){
   
 }); 
 </script> 
-<link rel="stylesheet" type="text/css" href="css/menu-css.css">
-<link rel="stylesheet" type="text/css" href="css/styleleft.css"> 
+<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/menu-css.css">
+<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/styleleft.css">
 </head><body> 
 <div id="content">
 <div class="menu">

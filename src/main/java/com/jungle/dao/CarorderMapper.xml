@@ -1,114 +1,116 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jungle.dao.CarorderMapper" >
-  <resultMap id="BaseResultMap" type="com.jungle.bean.Carorder" >
-    <id column="oid" property="oid" jdbcType="VARCHAR" />
-    <result column="cid" property="cid" jdbcType="INTEGER" />
-    <result column="startplace" property="startplace" jdbcType="VARCHAR" />
-    <result column="endplace" property="endplace" jdbcType="VARCHAR" />
-    <result column="total" property="total" jdbcType="DECIMAL" />
-    <result column="checkperson" property="checkperson" jdbcType="VARCHAR" />
-    <result column="checkphone" property="checkphone" jdbcType="VARCHAR" />
-    <result column="usetime" property="usetime" jdbcType="TIMESTAMP" />
-    <result column="useroption" property="useroption" jdbcType="BIT" />
-    <result column="message" property="message" jdbcType="VARCHAR" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="state" property="state" jdbcType="INTEGER" />
-    <result column="reservetime" property="reservetime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+<mapper namespace="com.jungle.dao.CarorderMapper">
+    <resultMap id="BaseResultMap" type="com.jungle.bean.Carorder">
+        <id column="oid" property="oid" jdbcType="VARCHAR"/>
+        <result column="cid" property="cid" jdbcType="INTEGER"/>
+        <result column="startplace" property="startplace" jdbcType="VARCHAR"/>
+        <result column="endplace" property="endplace" jdbcType="VARCHAR"/>
+        <result column="total" property="total" jdbcType="DECIMAL"/>
+        <result column="checkperson" property="checkperson" jdbcType="VARCHAR"/>
+        <result column="checkphone" property="checkphone" jdbcType="VARCHAR"/>
+        <result column="usetime" property="usetime" jdbcType="TIMESTAMP"/>
+        <result column="useroption" property="useroption" jdbcType="BIT"/>
+        <result column="message" property="message" jdbcType="VARCHAR"/>
+        <result column="uid" property="uid" jdbcType="INTEGER"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+        <result column="reservetime" property="reservetime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
     oid, cid, startplace, endplace, total, checkperson, checkphone, usetime, useroption, 
     message, uid, state, reservetime
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.CarorderExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from carorder
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from carorder
-    where oid = #{oid,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jungle.bean.CarorderExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from carorder
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from carorder
+        where oid = #{oid,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from carorder
     where oid = #{oid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.jungle.bean.CarorderExample" >
-    delete from carorder
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.jungle.bean.Carorder" >
+    <delete id="deleteByExample" parameterType="com.jungle.bean.CarorderExample">
+        delete from carorder
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.jungle.bean.Carorder">
     insert into carorder (oid, cid, startplace, 
       endplace, total, checkperson, 
       checkphone, usetime, useroption, 
@@ -120,206 +122,206 @@
       #{message,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
       #{reservetime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.jungle.bean.Carorder" >
-    insert into carorder
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="oid != null" >
-        oid,
-      </if>
-      <if test="cid != null" >
-        cid,
-      </if>
-      <if test="startplace != null" >
-        startplace,
-      </if>
-      <if test="endplace != null" >
-        endplace,
-      </if>
-      <if test="total != null" >
-        total,
-      </if>
-      <if test="checkperson != null" >
-        checkperson,
-      </if>
-      <if test="checkphone != null" >
-        checkphone,
-      </if>
-      <if test="usetime != null" >
-        usetime,
-      </if>
-      <if test="useroption != null" >
-        useroption,
-      </if>
-      <if test="message != null" >
-        message,
-      </if>
-      <if test="uid != null" >
-        uid,
-      </if>
-      <if test="state != null" >
-        state,
-      </if>
-      <if test="reservetime != null" >
-        reservetime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="oid != null" >
-        #{oid,jdbcType=VARCHAR},
-      </if>
-      <if test="cid != null" >
-        #{cid,jdbcType=INTEGER},
-      </if>
-      <if test="startplace != null" >
-        #{startplace,jdbcType=VARCHAR},
-      </if>
-      <if test="endplace != null" >
-        #{endplace,jdbcType=VARCHAR},
-      </if>
-      <if test="total != null" >
-        #{total,jdbcType=DECIMAL},
-      </if>
-      <if test="checkperson != null" >
-        #{checkperson,jdbcType=VARCHAR},
-      </if>
-      <if test="checkphone != null" >
-        #{checkphone,jdbcType=VARCHAR},
-      </if>
-      <if test="usetime != null" >
-        #{usetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="useroption != null" >
-        #{useroption,jdbcType=BIT},
-      </if>
-      <if test="message != null" >
-        #{message,jdbcType=VARCHAR},
-      </if>
-      <if test="uid != null" >
-        #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="state != null" >
-        #{state,jdbcType=INTEGER},
-      </if>
-      <if test="reservetime != null" >
-        #{reservetime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.jungle.bean.CarorderExample" resultType="java.lang.Integer" >
-    select count(*) from carorder
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update carorder
-    <set >
-      <if test="record.oid != null" >
-        oid = #{record.oid,jdbcType=VARCHAR},
-      </if>
-      <if test="record.cid != null" >
+    <insert id="insertSelective" parameterType="com.jungle.bean.Carorder">
+        insert into carorder
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="oid != null">
+                oid,
+            </if>
+            <if test="cid != null">
+                cid,
+            </if>
+            <if test="startplace != null">
+                startplace,
+            </if>
+            <if test="endplace != null">
+                endplace,
+            </if>
+            <if test="total != null">
+                total,
+            </if>
+            <if test="checkperson != null">
+                checkperson,
+            </if>
+            <if test="checkphone != null">
+                checkphone,
+            </if>
+            <if test="usetime != null">
+                usetime,
+            </if>
+            <if test="useroption != null">
+                useroption,
+            </if>
+            <if test="message != null">
+                message,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="reservetime != null">
+                reservetime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="oid != null">
+                #{oid,jdbcType=VARCHAR},
+            </if>
+            <if test="cid != null">
+                #{cid,jdbcType=INTEGER},
+            </if>
+            <if test="startplace != null">
+                #{startplace,jdbcType=VARCHAR},
+            </if>
+            <if test="endplace != null">
+                #{endplace,jdbcType=VARCHAR},
+            </if>
+            <if test="total != null">
+                #{total,jdbcType=DECIMAL},
+            </if>
+            <if test="checkperson != null">
+                #{checkperson,jdbcType=VARCHAR},
+            </if>
+            <if test="checkphone != null">
+                #{checkphone,jdbcType=VARCHAR},
+            </if>
+            <if test="usetime != null">
+                #{usetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="useroption != null">
+                #{useroption,jdbcType=BIT},
+            </if>
+            <if test="message != null">
+                #{message,jdbcType=VARCHAR},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=INTEGER},
+            </if>
+            <if test="reservetime != null">
+                #{reservetime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.jungle.bean.CarorderExample" resultType="java.lang.Integer">
+        select count(*) from carorder
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update carorder
+        <set>
+            <if test="record.oid != null">
+                oid = #{record.oid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.cid != null">
+                cid = #{record.cid,jdbcType=INTEGER},
+            </if>
+            <if test="record.startplace != null">
+                startplace = #{record.startplace,jdbcType=VARCHAR},
+            </if>
+            <if test="record.endplace != null">
+                endplace = #{record.endplace,jdbcType=VARCHAR},
+            </if>
+            <if test="record.total != null">
+                total = #{record.total,jdbcType=DECIMAL},
+            </if>
+            <if test="record.checkperson != null">
+                checkperson = #{record.checkperson,jdbcType=VARCHAR},
+            </if>
+            <if test="record.checkphone != null">
+                checkphone = #{record.checkphone,jdbcType=VARCHAR},
+            </if>
+            <if test="record.usetime != null">
+                usetime = #{record.usetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.useroption != null">
+                useroption = #{record.useroption,jdbcType=BIT},
+            </if>
+            <if test="record.message != null">
+                message = #{record.message,jdbcType=VARCHAR},
+            </if>
+            <if test="record.uid != null">
+                uid = #{record.uid,jdbcType=INTEGER},
+            </if>
+            <if test="record.state != null">
+                state = #{record.state,jdbcType=INTEGER},
+            </if>
+            <if test="record.reservetime != null">
+                reservetime = #{record.reservetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update carorder
+        set oid = #{record.oid,jdbcType=VARCHAR},
         cid = #{record.cid,jdbcType=INTEGER},
-      </if>
-      <if test="record.startplace != null" >
         startplace = #{record.startplace,jdbcType=VARCHAR},
-      </if>
-      <if test="record.endplace != null" >
         endplace = #{record.endplace,jdbcType=VARCHAR},
-      </if>
-      <if test="record.total != null" >
         total = #{record.total,jdbcType=DECIMAL},
-      </if>
-      <if test="record.checkperson != null" >
         checkperson = #{record.checkperson,jdbcType=VARCHAR},
-      </if>
-      <if test="record.checkphone != null" >
         checkphone = #{record.checkphone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.usetime != null" >
         usetime = #{record.usetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.useroption != null" >
         useroption = #{record.useroption,jdbcType=BIT},
-      </if>
-      <if test="record.message != null" >
         message = #{record.message,jdbcType=VARCHAR},
-      </if>
-      <if test="record.uid != null" >
         uid = #{record.uid,jdbcType=INTEGER},
-      </if>
-      <if test="record.state != null" >
         state = #{record.state,jdbcType=INTEGER},
-      </if>
-      <if test="record.reservetime != null" >
-        reservetime = #{record.reservetime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update carorder
-    set oid = #{record.oid,jdbcType=VARCHAR},
-      cid = #{record.cid,jdbcType=INTEGER},
-      startplace = #{record.startplace,jdbcType=VARCHAR},
-      endplace = #{record.endplace,jdbcType=VARCHAR},
-      total = #{record.total,jdbcType=DECIMAL},
-      checkperson = #{record.checkperson,jdbcType=VARCHAR},
-      checkphone = #{record.checkphone,jdbcType=VARCHAR},
-      usetime = #{record.usetime,jdbcType=TIMESTAMP},
-      useroption = #{record.useroption,jdbcType=BIT},
-      message = #{record.message,jdbcType=VARCHAR},
-      uid = #{record.uid,jdbcType=INTEGER},
-      state = #{record.state,jdbcType=INTEGER},
-      reservetime = #{record.reservetime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jungle.bean.Carorder" >
-    update carorder
-    <set >
-      <if test="cid != null" >
-        cid = #{cid,jdbcType=INTEGER},
-      </if>
-      <if test="startplace != null" >
-        startplace = #{startplace,jdbcType=VARCHAR},
-      </if>
-      <if test="endplace != null" >
-        endplace = #{endplace,jdbcType=VARCHAR},
-      </if>
-      <if test="total != null" >
-        total = #{total,jdbcType=DECIMAL},
-      </if>
-      <if test="checkperson != null" >
-        checkperson = #{checkperson,jdbcType=VARCHAR},
-      </if>
-      <if test="checkphone != null" >
-        checkphone = #{checkphone,jdbcType=VARCHAR},
-      </if>
-      <if test="usetime != null" >
-        usetime = #{usetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="useroption != null" >
-        useroption = #{useroption,jdbcType=BIT},
-      </if>
-      <if test="message != null" >
-        message = #{message,jdbcType=VARCHAR},
-      </if>
-      <if test="uid != null" >
-        uid = #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="state != null" >
-        state = #{state,jdbcType=INTEGER},
-      </if>
-      <if test="reservetime != null" >
-        reservetime = #{reservetime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where oid = #{oid,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.jungle.bean.Carorder" >
+        reservetime = #{record.reservetime,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.jungle.bean.Carorder">
+        update carorder
+        <set>
+            <if test="cid != null">
+                cid = #{cid,jdbcType=INTEGER},
+            </if>
+            <if test="startplace != null">
+                startplace = #{startplace,jdbcType=VARCHAR},
+            </if>
+            <if test="endplace != null">
+                endplace = #{endplace,jdbcType=VARCHAR},
+            </if>
+            <if test="total != null">
+                total = #{total,jdbcType=DECIMAL},
+            </if>
+            <if test="checkperson != null">
+                checkperson = #{checkperson,jdbcType=VARCHAR},
+            </if>
+            <if test="checkphone != null">
+                checkphone = #{checkphone,jdbcType=VARCHAR},
+            </if>
+            <if test="usetime != null">
+                usetime = #{usetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="useroption != null">
+                useroption = #{useroption,jdbcType=BIT},
+            </if>
+            <if test="message != null">
+                message = #{message,jdbcType=VARCHAR},
+            </if>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=INTEGER},
+            </if>
+            <if test="reservetime != null">
+                reservetime = #{reservetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where oid = #{oid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.jungle.bean.Carorder">
     update carorder
     set cid = #{cid,jdbcType=INTEGER},
       startplace = #{startplace,jdbcType=VARCHAR},
